@@ -1,0 +1,514 @@
+\documentclass[9pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage[a4paper,top=3.cm,bottom=3.cm,left=3cm,right=3cm]{geometry}
+
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\letvs}{Sia $ V $ uno spazio vettoriale sul campo $ \K $}
+\newcommand{\letvsR}{Sia $ V $ uno spazio vettoriale sul campo $ \R $}
+\newcommand{\letlin}{Sia $ L \colon \K^n \to \K^n $ un'applicazione lineare}
+\newcommand{\Ker}{\mathrm{Ker}\,}
+\newcommand{\Imm}{\mathrm{Im}\,}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\rg}{\mathrm{rg}}
+\newcommand{\scprd}[2]{\langle #1, #2 \rangle}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheoremstyle{mythm}{\topsep}{\topsep}{\rmfamily}{}{\bfseries}{}{.5em}{}
+
+\theoremstyle{mythm}
+\newtheorem{axiom}{Assioma}[section]
+\newtheorem{definition}{Definizione}[section]
+\newtheorem{propriety}{Proprietà}[section]
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{corollary}[thm]{Corollario}
+\newtheorem{prop}[thm]{Proprietà}
+
+\title{\textsc{Geometria 1}}
+\author{Alessandro Piazza \thanks{alessandro.piazza@sns.it}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+\section{Spazi Vettoriali}
+\begin{definition}[campo]
+	Un campo $ \K $ è un insieme su cui sono definite due operazioni di \emph{somma} e $ + $ e \emph{prodotto} $ \cdot $ che associano a due elementi dell'insieme un altro elemento dell'insieme
+	\begin{enumerate}
+		\item $ \forall x, y \in \K \Rightarrow x + y \in \K $
+		\item $ \forall x, y \in \K \Rightarrow x \cdot y \in \K $
+	\end{enumerate}
+	e che rispettano le seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item \emph{associativa}
+		\item \emph{commutativa}
+		\item \emph{esistenza degli elementi neutri}
+		\item \emph{opposto}
+		\item \emph{inverso}
+		\item \emph{distributiva del prodotto rispetto alla sommma}
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[spazio vettoriale]
+	Uno spazio vettoriale su un campo $ \K $ è un insieme  $ V $ su cui sono definite due operazioni di 
+	\begin{enumerate}
+		\item \emph{somma} tra elementi di $ V $: $ \forall v, w \in V \Rightarrow v + w \in V $
+		\item \emph{prodotto per scalare}: $ \forall v \in V, \forall \lambda \in \K \Rightarrow\lambda v \in V $
+	\end{enumerate}
+	che devono rispettare le seguenti proprietà:
+	\begin{enumerate}[label=(\roman*)]
+		\item \emph{associativa della somma}
+		\item \emph{commutativa della somma}
+		\item \emph{esistenza dell'elemento neutro della somma}
+		\item \emph{opposto della somma}
+		\item \emph{distributiva del prodotto rispetto alla somma}
+		\item \emph{associativa del prodotto}
+		\item \emph{elemento neutro del prodotto}
+	\end{enumerate}
+	Chiameremo \emph{vettori} gli elementi di $ V $.
+\end{definition}
+
+\begin{propriety} Uno spazio vettoriale gode delle seguenti proprietà:
+	\begin{enumerate}
+		\item Unicità dell'elemento neutro
+		\item Unicità dell'opposto
+		\item $ 0 \cdot v = O_V $
+		\item $ (-1) \cdot v = -v $
+	\end{enumerate}
+\end{propriety}
+
+\begin{definition}[sottospazio vettoriale]
+	\letvs. Diciamo che $ W \subseteq V $ è un sottospazio vettoriale di $ V $ se valgono le seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v, w \in W \Rightarrow v + w \in W $
+		\item $ \forall v \in W, \forall \lambda \in \K \Rightarrow \lambda v \in W $
+		\item $ O_V \in W $
+	\end{enumerate}
+\end{definition}
+
+\clearpage
+
+\begin{thm}[intersezione di sottospazi]
+	\textsf{Intersezione di sottospazi è un sottospazio vettoriale}
+\end{thm}
+
+\begin{thm}[somma di sottospazi]
+	\textsf{Somma di sottospazi è un sottospazio vettoriale}
+\end{thm}
+
+\begin{definition}[combinazione lineare]
+	\letvs, siano $ v_1, \ldots , v_n \in \nobreak V $ e $ \lambda_1, \ldots , \lambda_n \in \K $. Si dice combinazione lineare dei $ v_i $ un vettore $ v \in V $ tale che \[v = \sum_{i=1}^{n} \lambda_i v_i = \lambda_1 v_1 + \ldots + \lambda_n v_n \]
+\end{definition}
+
+\begin{definition}[span]
+	\[Span\{v_1, \ldots , v_n\} = \left\{ v \in V: \exists \lambda_1, \ldots , \lambda_n \in \K: v = \sum_{i=1}^{n} \lambda_i v_i \right\}\]
+\end{definition}
+
+\begin{thm}[proprietà dello span]
+	\letvs \, e siano $ v_1, \ldots , v_n \in \nolinebreak V $. Allora $ Span\{v_1, \ldots , v_n\} $ è il più piccolo sottospazio vettoriale di $ V $ che contiene tutti i $ v_i $.
+\end{thm}
+
+\begin{definition}[dipendenza e indpendenza lineare] 
+	\letvs \, e siano $ v_1, \ldots , v_n \in V $. Si dice che $ v_1, \ldots, v_n $ sono linearmente dipendenti se $ \exists \lambda_1, \ldots , \lambda_n \in \K $ non tutti nulli tali che \[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V.\] Analogamente si dice che $ v_1, \ldots, v_n $ sono linearmente indipendenti se \[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V \Leftrightarrow \lambda_1 = \ldots = \lambda_n = 0.\]	
+\end{definition}
+
+\begin{definition}[base]
+	\letvs. Un insieme $ \{v_1, \ldots, v_n\} $ si dice base di $ V $ se
+	\begin{enumerate}[label=(\roman*)]
+		\item $ v_1, \ldots, v_n $ sono linearmente indipendenti
+		\item $ Span\{v_1, \ldots , v_n\} = V $
+	\end{enumerate}
+\end{definition}
+
+\begin{thm}[unicità della combinazione lineare]
+	contenuto...
+\end{thm}
+
+\begin{definition}[sottoinsieme massimale]
+	\textsf{se aggiungo un vettore l'insieme non è più linearmente indipendente}	
+\end{definition}
+
+\begin{thm}
+	\textsf{linearmente indipendente + massimale = base}
+\end{thm}
+
+\begin{thm}
+	\letvs \, e sia $ \{v_1, \ldots, v_m\} $ una base di $ V $. Se $ w_1, \ldots, w_n $, con $ n > m $, sono vettori di $ V $, allora $ w_1, \ldots, w_n $ sono linermente indipendenti.
+\end{thm}
+
+\begin{corollary}
+	\letvs. Supponiamo di avere due basi di $ V $, una con $ n $ elementi e una con $ m $ elementi. Allora $ n = m $.
+\end{corollary}
+
+\begin{definition}[dimensione]
+	\letvs \, avente una base costituita da $ n $ vettori. Allora diremo che $ V $ ha dimensione $ n $ e scriveremo $ \dim V = n $.
+\end{definition}
+
+\begin{thm}
+	\textsf{sono n + generano = base}
+\end{thm}
+
+\begin{thm}
+	\textsf{sono n + set massimale = base}
+\end{thm}
+
+\begin{thm}
+	\textsf{sono n + linearmente indipendenti = base}
+\end{thm}
+
+\begin{thm}[completamento ad una base]
+	\letvs \, di dimensione $ n \geq 2 $. Sia $ r $ un intero positivo con $ 0 < r < n $. Dati $ r $ vettori $ v_1, \ldots , v_r \in V $ linearmente indipendenti è possibile completarli ad una base di $ V $, ossia trovare vettori $ v_{r+1}, \ldots, v_n $ tali che $ \{v_1, \ldots , v_r, v_{r+1}, \ldots , v_n\} $ è base di $ V $.
+\end{thm}
+
+\clearpage
+
+\section{Matrici}
+
+\begin{definition}[matrice]
+	Una matrice $ m \times n $ a coefficienti in $ \K $ è un tabella ordinata di $ m $ righe e $ n $ colonne i cui elementi appartengono ad un campo $ \K $. Dati $ a_{ij} \in \K $ con $ i = 1, \ldots, m $ e $ j = 1, \ldots, n $ diremo che $ A \in \mathrm{Mat}_{m \times n} (\K) $ e scriveremo
+	\[ A = 
+	\begin{pmatrix}
+		a_{11} & \cdots  & a_{1n} \\
+		\vdots & \ddots & \vdots \\
+		a_{m1} & \cdots  & a_{mn} \\
+	\end{pmatrix}\]
+\end{definition}
+
+\begin{definition}[matrice diagonale e identità]
+	contenuto...
+\end{definition}
+
+\begin{definition}[prodotto tra matrici]
+	contenuto...
+\end{definition}
+
+\begin{propriety}
+	\textsf{proprietà del prodotto ($ n \times n $ stabile rispetto al prodotto)}
+\end{propriety}
+
+\begin{definition}[matrice trasposta]
+	contenuto...
+\end{definition}
+
+\begin{propriety}[della trasposta]
+	contenuto...
+\end{propriety}
+
+\begin{definition}[matrici coniugate]
+	Due matrici $ A $ e $ B $ si dicono coinugate se esiste una matrice $ P $ invertibile tale che \[B = P^{-1} A P.\] Matrici coniugate rappresentano la stessa applicazioni lineari viste in due basi diverse. 
+\end{definition}
+
+\begin{definition}[traccia]
+	Sia $ M $ una matrice quadrata $ n \times n $. La traccia di $ M $ è la somma degli elementi sulla diagonale \[ \tr(M) = \tr 
+	\begin{pmatrix}
+	a_{11} & \cdots  & a_{1n} \\
+	\vdots & \ddots & \vdots \\
+	a_{n1} & \cdots  & a_{nn} \\
+	\end{pmatrix}
+	= a_{11} + \ldots + a_{nn}\]
+\end{definition}
+
+\begin{propriety}[della traccia]
+	La traccia gode delle seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \tr (A + B) = \tr(A) + \tr(B) $ e $ \tr(\lambda A) = \lambda \, \tr (A) $
+		\item $ \tr(\prescript{t}{}{A}) = \tr (A) $
+		\item $ \tr (AB) = \tr (BA) $
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}[invarianza della traccia per coniugio]
+	Se $ A $ e $ B $ sono matrici coniugate, allora $ \tr (A) = \tr (B) $
+\end{thm}
+
+Roba su riduzione a scalini...
+
+\clearpage
+
+\section{Applicazioni lineari}
+
+\begin{definition}[applicazione lineare]
+	Siano $ V $ e $ W $ due spazi vettoriali su un campo $ \K $. Diremo che una funzione $ L \colon V \to W  $ è un'applicazione lineare (o mappa lineare) se $ L $ soddisfa le seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v_1, v_2 \in V $ vale $ L(v_1 + v_2) = L(v_1) + L(v_2) $
+		\item $ \forall v \in V, \forall \lambda \in \K $ vale $ L(\lambda v) = \lambda L(v)$
+	\end{enumerate}
+	Diretta conseguenza è la seguente proprietà chiave delle applicazioni lineari
+	\begin{enumerate}[resume, label=(\roman*)]
+		\item $ L(O_V) =O_W $
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[nucleo]
+	Siano $ V $ e $ W $ due spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W  $ un'applicazione lineare. Definiamo nucleo o kernel di $ L $, e scriveremo $ \Ker L$, l'insieme degli elementi di $ V $ la cui immagine attraverso $ L $ è lo zero di $ W $. Formalmente \[\Ker L = \{v \in V \colon L(v) = O_W\} \]
+\end{definition}
+
+\begin{thm}
+	Sia $ L \colon V \to W  $ un'applicazione lineare. Allora $ \Ker L $ è un sottospazio vettoriale di $ V $.
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon V \to W  $ un'applicazione lineare. Allora $ \Imm L $ è un sottospazio vettoriale di $ W $.
+\end{thm}
+
+\begin{thm}
+	Un'applicazione lineare $ L \colon V \to W $ è iniettiva se e solo se $ \Ker L = \{O_V\} $.
+\end{thm}
+
+\begin{thm}[composizione di applicazioni lineari]
+	\textsf{la composizione di due applicazioni lineari è ancora un'applicazione lineare}
+\end{thm}
+
+\begin{thm}[inversa di un'applicazione lineare]
+	\textsf{l'inversa di una applicazioni lineare (se esiste) è ancora un'applicazione lineare}
+\end{thm}
+
+\begin{thm}
+	\letlin \, tale che $ \Ker L = \{O_V\} $. Se $ v_1, \ldots, v_n \in V $ sono vettori linearmente indipendenti, anche $ L(v_1), \ldots, L(v_n) $ sono vettori linearmente indipendenti di $ W $.
+\end{thm}
+
+\begin{thm}[delle dimensioni]
+	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W $  un'applicazione lineare. Allora vale \[\dim V = \dim \Imm L + \dim \Ker L\]
+\end{thm}
+
+\begin{thm}
+	\letlin. Se $ \Ker L = \{O_V\} $ e $ \Imm L = W $, allora $ L $ è biettiva e dunque invertibile
+\end{thm}
+
+\begin{definition}[isomorfismo]
+	Un'applicazione lineare $ L \colon V \to W $ biettiva si dice isomorfismo. Se tale applicazioni esiste si dice che $ V $ e $ W $ sono isomorfi.
+\end{definition}
+
+\begin{definition}[endomorfismo]
+	Un'applicazione lineare $ L \colon V \to V $ dallo spazio in sé si dice endomorfismo.
+\end{definition}
+
+\clearpage
+
+\section{Applicazioni lineari e matrici}
+
+\begin{thm}
+	Sia $ L \colon \K^n \to \K $ un'applicazione lineare. Allora esiste un unico vettore $ A \in \K^n $ tale che $ \forall X \in \K^n $ \[L(X) = A \cdot X\]
+\end{thm}
+
+\begin{thm}
+	Esiste una corrispondenza biunivoca tra \[\{L \colon \K^n \to \K^m \quad \mathrm{lineare}\} \leftrightarrow \mathrm{Mat}_{m \times n}(\K)\]
+	\begin{enumerate}
+		\item Data una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ è possibile associare ad essa un'applicazione lineare
+		\begin{align*}
+		L \colon \K^n & \to \K^m \\
+		X & \mapsto MX
+		\end{align*}
+		\item Sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Allora esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che $ \forall X \in \K^n $, $ L(X) = MX $. Se $ \mathscr{C} = \{e_1, \ldots , e_n\} $ la è base canonica di $ \K^n $, le colonne di $ M $ sono $ L(e_1), \ldots, L(e_n) $.
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Siano inoltre $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. Preso $ v \in V $ esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che \[X_{\mathscr{B'}} (L(v)) = M X_{\mathscr{B}} (v) \] dove $ X(w) $ è il vettore colonna di $ w $ scritto nella rispettiva base. 
+\end{thm}
+
+\begin{thm}
+	Siano $ V $ e $ W $ due spazi vettoriali su $ \K $ di dimensione $ n $ e $ m $. Siano $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. \\ Indicando con $ \mathscr{L}(V, W) = \{L \colon \K^n \to \K^m \quad \mathrm{lineare}\} $ e con $ \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}} $ la matrice associata a $ L $ rispetto alle basi $ \mathscr{B} $ e $ \mathscr{B}' $, si ha che 
+	\begin{align*}
+	M \colon \mathscr{L}(V, W) & \to \mathrm{Mat}_{m \times n}(\K)\\
+	L & \mapsto \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}}
+	\end{align*}
+	è un'applicazione lineare ed è un isomorfismo tra lo spazio delle applicazioni lineari e lo spazio delle matrici. 
+\end{thm}
+
+\begin{thm}[matrice di funizione composta]
+	Siano $ V $, $ W $ e $ U $ spazi vettoriali e siano \linebreak $ \mathscr{B} = \{v_1, \ldots, v_n\} $, $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ e $ \mathscr{B}'' = \{u_1, \ldots, u_s\} $ basi di $ V $, $ W $ e $ U $ rispettivamente. Siano inoltre $ F \colon V \to W $ e $ G \colon W \to U $ lineari. Allora \[ \left [G \circ F \right ]_{\mathscr{B}''} ^{\mathscr{B}} = \left [G \right ]_{\mathscr{B}''} ^{\mathscr{B}'} \left [F \right ]_{\mathscr{B}'} ^{\mathscr{B}} \]
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ B \colon V \to V $ lineare e invertibile. Allora vale che \[\Imm L \circ B = \Imm L \quad \mathrm{e} \quad \dim \Ker L \circ B = \dim  \Ker L\] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [B \right ] $ è la matrice invertibile delle mosse di colonna associata a $ B $, la matrice $ \left [B \right ] \left [L \right ] $ è una matrice ridotta a scalini per colonna in cui lo $ Span $ delle colonne è lo stesso dello span delle colonne di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per colonne lascia invariato lo $ Span $ delle colonne. 
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ U \colon W \to W $ lineare e invertibile. Allora vale che \[\Ker U \circ L = \Ker L\quad \mathrm{e} \quad \dim \Imm U \circ L = \dim \Imm L  \] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [U \right ] $ è la matrice invertibile delle mosse di riga associata a $ U $, la matrice $ \left [L \right ] \left [U \right ] $ è una matrice ridotta a scalini per riga che ha lo stesso $ \Ker $ di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per righe lascia invariato lo spazio delle soluzioni di un sistema lineare omogeneo.
+\end{thm}
+
+\begin{definition}[rango]
+	Sia $ A \in \mathrm{Mat}_{m \times n} (\K) $ definiamo rango di A, $ \mathrm{rg} A $, in modo equivalente come
+	\begin{enumerate}
+		\item il numero massimo di colonne linearmente indipendenti (numero di \emph{pivot} colonna di $ A $ ridotta a scalini per colonna)
+		\item il numero massimo di righe linearmente indipendenti (numero di \emph{pivot} riga di $ A $ ridotta a scalini per righe)
+		\item la $ \dim \Imm L $, dove $ L \colon \K^n \to \K^m $ è l'applicazione lineare associata $ \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}} = A $
+	\end{enumerate}
+\end{definition}
+
+\clearpage
+
+\section{Formula di Grassmann e somma diretta}
+
+\begin{thm}[formula di Grassmann]
+	Siano $ A $ e $ B $ sottospazi vettoriali di $ V $ su un campo $ \K $. Vale \[\dim A + \dim B = \dim (A + B) + \dim (A \cap B)\]
+\end{thm}
+
+\begin{definition}[somma diretta]
+	Dati $ A $ e $ B $ sottospazi di $ V $ su un campo $ \K $, si dice che $ A $ e $ B $ sono in somma diretta se $ A \cap B = \{O_V\} $.\\
+	In modo del tutto equivalente $ A $ e $ B $ sono in somma diretta se e solo se $ \dim A \, + \, \dim B = \dim (A + B) $.	
+\end{definition}
+
+\begin{definition}[somma diretta di $ k $ sottospazi]
+	$ U_1, \ldots , U_k $ sottospazi di $ V $ su un campo $ \K $ si dicono essere insomma diretta se $ \forall i \in \{1, \ldots, k\} $ vale \[U_i \cap (U_1 + \ldots + \hat{U}_i + \ldots + U_k) = \{O_V\}\]
+	In modo equivalente $ U_1, \ldots , U_k $ sono insomma diretta se e solo se \[\dim U_1 + \ldots + \dim U_k = \dim (U_1 + \ldots + U_k)\]
+\end{definition}
+
+\begin{definition}[complementare di un sottospazio]
+	Sia $ A $ un sottospazio di $ V $ su un campo $ \K $. Un complementare di $ A $ è un sottospazio $ B $ di $ V $ tale che
+	\begin{enumerate}[label=(\roman*)]
+		\item $ A \cap B = \{O_V\} $ ($ A $ e $ B $ sono in somma diretta)
+		\item $ A + B = V $
+	\end{enumerate}
+	In tal caso scriveremo che $ A \oplus B = V $. 
+\end{definition}
+
+\clearpage
+
+\section{Sistemi lineari}
+
+\begin{definition}[sistema lineare omogeneo]
+	contenuto...
+\end{definition}
+
+\begin{definition}[matrice associata al sistema lineare omogeneo]
+	contenuto...
+\end{definition}
+
+\begin{thm}[dimensione delle soluzioni]
+	Sia $ M $ la matrice associata ad un sistema lineare omogeneo con $ n $ incognite. Indicando con $ S $ lo spazio delle soluzioni del sistema lineare vale \[\dim S = n - \mathrm{rg}M\]
+\end{thm}
+
+\begin{definition}[sottospazio ortogonale]
+	contenuto... + \textsf{il sottospazio ortogonale è l'inieme delle soluzioni del sistema omogeneo}
+\end{definition}
+
+\begin{definition}[sistema lineare non omogeneo]
+	contenuto...
+\end{definition}
+
+\begin{definition}[matrice completa e incompleta associata]
+	contenuto...
+\end{definition}
+
+\begin{thm}[insieme soluzioni del sistema non omogeneo]
+	Sia $ S $ l'insieme delle soluzioni del sistema non omogeneo e $ S_0 $ l'insieme delle soluzioni del sistema omogeneo associato. Supposto $ S \neq \emptyset $, preso un qualunque $ v \in S $ vale \[S = v + S_0\]
+\end{thm}
+
+\begin{definition}[sottospazio affine]
+	\letvs, $ U $ un suo sottospazio e $ v \in V - U $ ($ v \neq 0 $) si dice che l'insieme $ v + U $ è un sottospazio affine di $ V $. Per convenzione si pone $ \dim (v + U) = \dim U $.
+\end{definition}
+
+\clearpage
+
+\section{Prodotti scalari}
+
+\begin{definition}[prodotto scalare]
+	\letvs. Un prodotto scalare su $ V $ è una funzione \[\scprd{\;}{\,} \colon V \times V \to \K \] che soddisfa le seguenti prorpietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v,w \in V $ vale $ \scprd{v}{w} = \scprd{w}{v} $
+		\item $ \forall v, w, u \in V $ vale $ \scprd{v}{w + u} = \scprd{v}{w} + \scprd{v}{u} $
+		\item $ \forall v, w \in V, \forall \lambda \in \K $ vale $ \scprd{\lambda v}{w} = \scprd{v}{\lambda w} = \lambda \scprd{v}{w} $
+	\end{enumerate}	
+\end{definition}
+
+\begin{propriety} Alcuni prodotti scalari godono delle segenti proprietà
+	\begin{enumerate}
+		\item Un vettore $ v \in V $ tale che $ \scprd{v}{v} = 0 $ si dice \emph{isotropo}.
+		\item Un prodotto scalare tale che preso un $ v \in V $ \[\forall w \in V \quad \scprd{v}{w} = O_V \Rightarrow v = O_V\] si dice \emph{non degenere}.
+		\item Un prodotto scalare su $ V $ spazio vettoriale sul campo $ \R $ tale che \[ \forall v \in V \quad \scprd{v}{v} \geq 0 \quad \mathrm{e} \quad \scprd{v}{v} = 0 \Leftrightarrow v = O_V \] si dice \emph{definito positivo}.
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}
+	Un prodotto scalare è non degenere se e solo se la matrice $ E $ che lo rappresenta ha rango massimo. Ovvero, se $ \{e_1, \ldots, e_n \} $ è base di $ V $
+	\[ \mathrm{rg} E = \mathrm{rg} 
+	\begin{pmatrix}
+		\scprd{e_1}{e_1} & \cdots  & \scprd{e_1}{e_n} \\
+		\vdots           & \ddots & \vdots \\
+		\scprd{e_n}{e_1} & \cdots  & \scprd{e_n}{e_n} \\
+	\end{pmatrix}
+	= n	\]
+\end{thm}
+
+\begin{definition}[norma, distanza, ortogonalità]
+	Sia $ \scprd{\,}{} $ un prodotto scalare su $ V $ spazio vettoriale su $ \R $. Allora
+	\begin{enumerate}
+		\item la norma di $ v \in V $ è $ \norm{v} = \sqrt{\scprd{v}{v}} $
+		\item la distanza tra $ v, w \in V $ è data da $ \norm{v - w} $
+		\item due vettori $ v, w \in V $ si dicono ortogonali se $ \scprd{v}{w} = 0 $
+	\end{enumerate}
+\end{definition}
+
+\begin{thm}[di Pitagora]
+	\letvsR \, con prodotto scalare definito positivo. Dati $ v, w \in V \colon \scprd{v}{w} = 0 $	allora \[\norm{v + w}^2 = \norm{v}^2 + \norm{w}^2\]
+\end{thm}
+
+\begin{thm}[del parallelogramma]
+	\letvsR \, con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[\norm{v + w}^2 + \norm{v - w}^2 = 2\norm{v}^2 + 2\norm{w}^2\]
+\end{thm}
+
+\begin{definition}[componente]
+	Dati $ v, w \in V $ chiamiamo coefficiente di Fourier o componente di $ v $ lungo $ w $ lo scalare \[c = \frac{\scprd{v}{w}}{\scprd{w}{w}}\] In particolare vale $ \scprd{v - cw}{w} = 0 $
+\end{definition}
+
+\begin{thm}[disuguaglianza di Schwarz]
+	\letvsR \, con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[|\scprd{v}{w}| \leq \norm{v} \cdot \norm{w}\]
+\end{thm}
+
+\begin{thm}[disuguaglianza triangolare]
+	\letvsR \, con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[\norm{v + w} \leq \norm{v} + \norm{w}\]
+\end{thm}
+
+\begin{thm}
+	Siano $ v_1, \ldots , v_n \in V $ a due a due perpendicolari ($ \forall i \neq j \; \scprd{v_i}{v_j} = 0 $). Allora $ \forall v \in V $ il vettore \[v - \frac{\scprd{v}{v_1}}{\scprd{v_1}{v_1}}v_1 - \ldots - \frac{\scprd{v}{v_n}}{\scprd{v_n}{v_n}}v_n\] è ortogonale a ciascuno dei $ v_i $. Risulta inoltre che il vettore $ c_1 v_1 + \ldots + c_n v_n $ (dove $ c_i = \frac{\scprd{v}{v_i}}{\scprd{v_i}{v_i}} $) è la migliore approssimazione di $ v $ come combinazione lineare dei $ v_i $.
+\end{thm}
+
+\begin{thm}[disuguaglianza di Bessel]
+	Siano $ e_1, \ldots , e_n \in V $ a due a due perpendicolari e unitari. Dato un $ v \in V $, sia $ c_i = \frac{\scprd{v}{e_i}}{\scprd{e_i}{e_i}} $. Allora vale \[\sum_{i = 1}^{n}c_i^2 \leq \norm{v}^2\]
+\end{thm}
+
+\begin{thm}[ortogonalizzazione di Gram-Schmidt]
+	Siano $ v_1, \ldots , v_n \in V $ vettori linearmente indipendenti. Possiamo allora trovare dei vettori $ u_1,\ldots, u_r $, con $ r \leq n $ ortogonali tra loro e tali che $ \forall i \leq r, \, Span\{v_1, \ldots, v_i\} = Span \{u_1, \ldots, u_i\} $. In particolare basterà procedere in modo induttivo e prendere
+	\[\begin{cases}
+	u_1 = v_1 \\
+	u_{i} = v_i - \frac{\scprd{v_i}{u_1}}{\scprd{u_1}{u_1}}u_1 - \ldots - \frac{\scprd{v_i}{u_{i-1}}}{\scprd{u_{i-1}}{u_{i-1}}}u_{i-1}
+	\end{cases}\]
+\end{thm}
+
+\begin{corollary}[esistenza della base ortonormale]
+	Dato $ V $ spazio vettoriale con prodotto scalare definito positivo esiste una base ortonormale di $ V $, ossia una base $ \{u_1,\ldots, u_r\} $ tale che \linebreak $ \forall i \neq j \; \scprd{u_i}{u_j} = 0 $ e che $ \forall i \; \norm{u_i} = 1 $.
+\end{corollary}
+
+\begin{thm}
+	Sia $ V $ uno spazio vettoriale con prodotto scalare definito positivo. Per ogni $ W $ sottospazio di $ V $ vale che \[V = W \oplus W^{\perp}\]
+\end{thm}
+
+\begin{definition}[prodotto hermitiano]
+	contenuto...
+\end{definition}
+
+\end{document}
