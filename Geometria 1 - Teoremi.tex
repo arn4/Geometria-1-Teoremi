@@ -12,6 +12,7 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{enumitem}
+\usepackage{cancel}
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
@@ -19,11 +20,14 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\letvs}{Sia $ V $ uno spazio vettoriale sul campo $ \K $}
 \newcommand{\letvsR}{Sia $ V $ uno spazio vettoriale sul campo $ \R $}
+\newcommand{\letvsC}{Sia $ V $ uno spazio vettoriale sul campo $ \C $}
 \newcommand{\letlin}{Sia $ L \colon \K^n \to \K^n $ un'applicazione lineare}
 \newcommand{\Ker}{\mathrm{Ker}\,}
 \newcommand{\Imm}{\mathrm{Im}\,}
 \newcommand{\tr}{\mathrm{tr}}
 \newcommand{\rg}{\mathrm{rg}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\cof}{\mathrm{cof}}
 \newcommand{\scprd}[2]{\langle #1, #2 \rangle}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
@@ -35,7 +39,7 @@
 \newtheorem{propriety}{Proprietà}[section]
 \newtheorem{thm}{Teorema}[section]
 \newtheorem{corollary}[thm]{Corollario}
-\newtheorem{prop}[thm]{Proprietà}
+\newtheorem{prop}[thm]{Proposizione}
 
 \title{\textsc{Geometria 1}}
 \author{Alessandro Piazza \thanks{alessandro.piazza@sns.it}}
@@ -155,7 +159,7 @@
 \end{thm}
 
 \begin{thm}
-	\letvs \, e sia $ \{v_1, \ldots, v_m\} $ una base di $ V $. Se $ w_1, \ldots, w_n $, con $ n > m $, sono vettori di $ V $, allora $ w_1, \ldots, w_n $ sono linermente indipendenti.
+	\letvs \ e sia $ \{v_1, \ldots, v_m\} $ una base di $ V $. Se $ w_1, \ldots, w_n $, con $ n > m $, sono vettori di $ V $, allora $ w_1, \ldots, w_n $ sono linermente indipendenti.
 \end{thm}
 
 \begin{corollary}
@@ -326,7 +330,7 @@ Roba su riduzione a scalini...
 \end{thm}
 
 \begin{thm}
-	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Siano inoltre $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. Preso $ v \in V $ esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che \[X_{\mathscr{B'}} (L(v)) = M X_{\mathscr{B}} (v) \] dove $ X(w) $ è il vettore colonna di $ w $ scritto nella rispettiva base. 
+	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Siano inoltre $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. Preso $ v \in V $ esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che \[X_{\mathscr{B} '} (L(v)) = M X_{\mathscr{B}} (v) \] dove $ X(w) $ è il vettore colonna di $ w $ scritto nella rispettiva base. 
 \end{thm}
 
 \begin{thm}
@@ -492,15 +496,15 @@ Roba su riduzione a scalini...
 \end{thm}
 
 \begin{thm}[ortogonalizzazione di Gram-Schmidt]
-	Siano $ v_1, \ldots , v_n \in V $ vettori linearmente indipendenti. Possiamo allora trovare dei vettori $ u_1,\ldots, u_r $, con $ r \leq n $ ortogonali tra loro e tali che $ \forall i \leq r, \, Span\{v_1, \ldots, v_i\} = Span \{u_1, \ldots, u_i\} $. In particolare basterà procedere in modo induttivo e prendere
+	Sia $ V $ uno spazio vettoriale con prodotto scalare definito positivo. Siano $ v_1, \ldots , v_n \in V $ vettori linearmente indipendenti. Possiamo allora trovare dei vettori $ u_1,\ldots, u_r $, con $ r \leq n $ ortogonali tra loro e tali che $ \forall i \leq r, \, Span\{v_1, \ldots, v_i\} = Span \{u_1, \ldots, u_i\} $. In particolare basterà procedere in modo induttivo e prendere
 	\[\begin{cases}
 	u_1 = v_1 \\
 	u_{i} = v_i - \frac{\scprd{v_i}{u_1}}{\scprd{u_1}{u_1}}u_1 - \ldots - \frac{\scprd{v_i}{u_{i-1}}}{\scprd{u_{i-1}}{u_{i-1}}}u_{i-1}
 	\end{cases}\]
 \end{thm}
 
-\begin{corollary}[esistenza della base ortonormale]
-	Dato $ V $ spazio vettoriale con prodotto scalare definito positivo esiste una base ortonormale di $ V $, ossia una base $ \{u_1,\ldots, u_r\} $ tale che \linebreak $ \forall i \neq j \; \scprd{u_i}{u_j} = 0 $ e che $ \forall i \; \norm{u_i} = 1 $.
+\begin{corollary}[esistenza della base ortonormale per prodotto scalare definito positivo]
+	Dato $ V $ spazio vettoriale con prodotto scalare definito positivo esiste una base ortonormale di $ V $, ossia una base $ \{u_1,\ldots, u_r\} $ tale che $ \forall i \neq j \; \scprd{u_i}{u_j} = 0 $ e che $ \forall i \; \norm{u_i} = 1 $.
 \end{corollary}
 
 \begin{thm}
@@ -508,7 +512,213 @@ Roba su riduzione a scalini...
 \end{thm}
 
 \begin{definition}[prodotto hermitiano]
-	contenuto...
+	\letvsC. Un prodotto hermitiano su $ V $ è una funzione \[\scprd{\;}{\,} \colon V \times V \to \K \] che soddisfa le seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v,w \in V $ vale $ \scprd{v}{w} = \overline{\scprd{w}{v}} $ (coniugato)
+		\item $ \forall v, w, u \in V $ vale $ \scprd{v}{w + u} = \scprd{v}{w} + \scprd{v}{u} $ e $ \scprd{v + w}{u} = \scprd{v}{u} + \scprd{w}{u} $
+		\item $ \forall v, w \in V, \forall \lambda \in \K $ vale $ \scprd{\lambda v}{w} = \lambda \scprd{v}{w} $ e $ \scprd{v}{\lambda w} = \overline{\lambda} \scprd{v}{w} $
+	\end{enumerate}	
 \end{definition}
+
+\begin{definition}[prodotto hermitiano standard]
+	Dati due vettori colonna $ v, w \in \C^n $ definiamo il prodotto hermitiano standard come 
+	\[v \cdot w = 
+	\begin{pmatrix}
+	\alpha_1 \\
+	\vdots \\
+	\alpha_n \\ 
+	\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}
+	\beta_1 \\
+	\vdots \\
+	\beta_n \\ 
+	\end{pmatrix}
+	 = \alpha_1 \overline{\beta_1} + \ldots + \alpha_n \overline{\beta_n}\]
+\end{definition}
+
+\begin{thm}[esistenza della base ortogonale per prodotto scalare generico]
+	\letvs \ non banale di dimensione finita dotato di un prodotto scalare. Allora $ V $ ha una base ortogonale. 
+\end{thm}
+
+\begin{prop}[base ortonormale]
+	Sia $ \{w_1, \ldots, w_n\} $ una base ortogonale di $ V $ con un prodotto scalare. Posto
+	\[v_i = 
+	\begin{cases*}
+	\frac{w_i}{\sqrt{\scprd{w_i}{w_i}}} & se $ \scprd{w_i}{w_i} > 0 $ \\
+	w_i & se $ \scprd{w_i}{w_i} = 0 $ \\
+	\frac{w_i}{\sqrt{-\scprd{w_i}{w_i}}} & se $ \scprd{w_i}{w_i} < 0 $ \\
+	\end{cases*}\]
+	l'insieme $ \{v_1, \ldots, v_n\} $ è una base ortonormale di $ V $. 
+\end{prop}
+
+\begin{thm}[corrispondenza matrice - prodotto scalare]
+	\letvs \ e sia $ \mathscr{B} = \{v_1, \ldots, v_n\} $ base di $ V $. Dato un prodotto scale $ \varphi \colon V \times V \to \K $ la matrice del prodotto scalare è \[M_{\mathscr{B}}(\varphi) = (\varphi(v_i, v_j))_{\substack{i = 1, \ldots, n \\ j = 1, \ldots, n}}.\] Viceversa data $ M $ matrice simmetrica del prodotto scalare e $ u, w $ vettori di vettori colonna $ [u]_{\mathscr{B}} $ e $ [w]_{\mathscr{B}} $ si ha \[\varphi(v, w) = [u]_{B}^t \cdot M \cdot [w]_{\mathscr{B}}\].
+\end{thm}
+
+\begin{prop}[radicale]
+	Vale che $ V_0 = \{v \in V : \forall w \in V, \varphi(v, w) = 0\} = \{v \in V : M_{\mathscr{B}}(\varphi) \cdot [v]_{\mathscr{B}} = 0\} $. (Moralmente $ V_0 = \ker{M_{\mathscr{B}}(\varphi)} $). 
+\end{prop}
+
+\begin{definition}[spazio duale, funzionali]
+	\letvs. Si definisce spazio duale di $ V $ l'insieme delle applicazioni lineari da $ V $ in $ \K $ \[V^{*} = \mathscr{L}(V, \K) = \mathscr{L}(V) = \{L \colon V \to \K : L \text{ è lineare}\}.\] I suoi elementi vengono detti funzionali lineari da $ V $ in $ \K $ e risulta $ \dim V = \dim V^{*} $. 
+\end{definition}
+
+\begin{definition}[base duale]
+	\letvs. Fissata una base $ \{v_1, \ldots, v_n\} $ di $ V $ esiste una base $ \{\varphi_1, \ldots, \varphi_n\} $ di $ V^{*} $ ad essa associata detta base duale di $ v_1, \ldots, v_n $ definita come 
+	\[\varphi_i (v_j) = 
+	\begin{cases*}
+	1 & se $ i = j $ \\
+	0 & se $ i \neq j $ \\
+	\end{cases*}\]
+\end{definition}
+
+\begin{thm} \label{thm:isom_duale}
+	\letvs \ di dimensione finita con un prodotto scalare non degenere. Allora l'applicazione
+	\begin{align*}
+	\Phi \colon V & \to V^{*} \\
+	v & \mapsto L_v = \scprd{v}{\cdot \,}
+	\end{align*}
+	dove $ L_v $ è la funzionale tale che $ \forall w \in V : L_v(w) = \scprd{v}{w} $, è un isomorfismo tra $ V $ e il suo duale $ V^{*} $. 
+\end{thm}
+
+\begin{thm}[annullatore]
+	\letvs \ di $ \dim V = n $ e sia $ W $ sottospazio di $ V $. Sia inoltre $ W^{\circ} = \{\varphi \in V^{*} : \forall w \in W, \varphi(w) = 0\} $ l'annullatore di $ W $. Allora $ W^{\circ} $ è sottospazio di $ V^{*} $ e vale che $ \dim W^{\circ} = n - \dim W $. 
+\end{thm}
+
+\begin{corollary}
+	\letvs \ di $ \dim V = n $ con prodotto scalare non degenere, sia $ W $ sottospazio di $ V $ e $ W^{\perp} $ il suo ortogonale. Siano inoltre $ V^{*} $ il duale di $ V $ e $ W^{\circ} $ l'annullatore di $ W $. Allora $ \Phi(W^{\perp}) = W^{\circ} $ (in altre parole $ \Phi|_{W^{\perp}} \colon W^{\perp} \to W^{\circ} $ è un isomorfismo) e vale quindi \[\dim W + \dim W^{\perp} = \dim V\]. 
+\end{corollary}
+
+\begin{thm}
+	Sia $ \Phi \colon V \to V^{*} $ l'isomorfismo del Teorema \ref{thm:isom_duale}. Detto $ V_0 $ il radicale di $ V $ vale che $ V_0 = \ker \Phi $ e che $ M_{\mathscr{B^{*}}}^{\mathscr{B}} (\Phi) = M_{\mathscr{B}}(L_v) $ dove $ \mathscr{B}^{*} $ è la base del duale associata alla base $ \mathscr{B} $ di $ V $. 
+\end{thm}
+
+\begin{corollary}
+	Un prodotto scalare $ \varphi $ è non degenere $ \iff $ $ V_0 = \{O_V\} $ $ \iff $ $ \ker M_{\mathscr{B}}(\varphi) = O_V $ $ \iff $ $ M_{\mathscr{B}}(\varphi) $ ha rango $ n = \dim V $. 
+\end{corollary}
+
+\begin{corollary}
+	Se $ \mathscr{B} $ è una base ortonormale allora la matrice del prodotto scalare è diagonale. Detti $ \lambda_i = \varphi(v_i, v_i) $ si ha 
+	\[M_{\mathscr{B}}(\varphi) = 
+	\begin{pmatrix}
+	\lambda_1 & \cdots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \ldots & \lambda_n \\
+	\end{pmatrix}\]
+\end{corollary}
+
+\begin{prop}
+	Se $ \mathscr{B} = \{v_1, \ldots, v_n\} $ è una base ortonormale di $ V $ allora \[n_0 (\varphi) = \mathrm{card}\{i : \lambda_i = \varphi(v_i, v_i) = 0\} = \dim V_0.\] Tale valore viene detto indice di nullità del prodotto scalare. 
+\end{prop}
+
+\begin{thm}[di Sylvester]
+	\letvs \, $ \varphi $ un prodotto scalare su $ V $ e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ una base di $ V $. Esiste un numero intero $ r = n_{+} (\varphi) $ che dipende solo da $ \varphi $ e non dalla base $ \mathscr{B} $, detto indice di positività, tale che ci sono esattamente $ r $ indici $ i $ tali che $ \varphi(v_i, v_i) = 1 $. Analogamente esiste un $ r' = n_{-} (\varphi) $ che dipende solo da $ \varphi $ e non dalla base $ \mathscr{B} $, detto indice di negatività, tale che ci sono esattamente $ r' $ indici $ i $ tali che $ \varphi(v_i, v_i) = - 1 $.
+\end{thm}
+
+\begin{definition}[segnatura]
+	Si definisce segnatura di un prodotto scalare $ \varphi $ su $ V $ la terna \linebreak $ (n_0 (\varphi), n_{+} (\varphi), n_{-} (\varphi)) $. Detta $ n = \dim V $ vale \[n_0 (\varphi) + n_{+} (\varphi) + n_{-} (\varphi) = n.\] Dato inoltre $ W $ sottospazio vettoriale di $ V $ valgono le seguenti caratterizzazioni
+	\begin{itemize}
+		\item $ n_0 (\varphi) = \dim V_0 $ (radicale);
+		\item $ n_{+} (\varphi) = \max{\{\dim W : W \subseteq V \text{ e } \varphi|_{W} > 0\}} $;
+		\item $ n_{-} (\varphi) = \max{\{\dim W : W \subseteq V \text{ e } \varphi|_{W} < 0\}} $.
+	\end{itemize}
+\end{definition}
+
+\clearpage
+
+\section{Determinante}
+
+\begin{definition}[gruppo simmetrico]
+	Il gruppo simmetrico di un insieme è il gruppo formato dall'insieme delle permutazioni dei suoi elementi, cioè dall'insieme delle funzioni biiettive di tale insieme in se stesso, munito dell'operazione binaria di composizione di funzioni. \\
+	In particolare detto $ S_n = \{1, \ldots, n\} $ l'insieme delle permutazioni \[\Sigma_n = \Sigma (S_n) = \{\sigma \colon S_n \to S_n : \sigma \text{ è biettiva}\}\] è un gruppo simmetrico. Ricordiamo che una permutazione $ \sigma \in \Sigma_n $ viene spesso indicata con la seguente notazione 
+	\[\begin{pmatrix}
+	1 & 2 & \cdots & n \\
+	\sigma (1) & \sigma (2) & \cdots & \sigma (n) \\
+	\end{pmatrix}\]
+	dove si intende che l'elemento $ i $ viene mandato in $ \sigma (i) $ dalla permutazione. 
+\end{definition}
+
+\begin{definition}[trasposizione]
+	Una trasposizione è una permutazione $ \tau \in \Sigma_n $ tale che scambia due soli elementi di $ S_n $ mentre lascia invariati i restaniti $ n - 2 $. Se $ \tau $ scambia $ i, j \in S_n $ scriveremo $ \begin{pmatrix}
+	i & j \\
+	\end{pmatrix} $. 
+\end{definition}
+
+\begin{prop}
+	\begin{enumerate}[label = (\roman*)]
+		\item Ogni permutazione $ \sigma \in \Sigma_n $ è esprimile, non in modo unico, come prodotto (composizione) di trasposizioni. 
+		\item Se $ \sigma = \tau_1 \circ \cdots \circ \tau_h = \lambda_1 \circ \cdots \circ \lambda_h $ con $ \tau_i $ e $ \lambda_j $ trasposizioni allora $ h $ e $ k $ hanno la stessa parità. Se $ \sigma $ è prodotto di un numero pari (dispari) di trasposizioni diremo che $ \sigma $ è pari (dispari). 
+	\end{enumerate}
+\end{prop}
+
+\begin{definition}
+	Data $ \sigma \in \Sigma_n $ definiamo la funzione segno $ \sgn \colon \Sigma_n \to \{-1, 1\} $ come 
+	\[\sgn(\sigma) = 
+	\begin{cases*}
+	1 & se $ \sigma $ è pari \\
+	-1 & se $ \sigma $ è dispari \\
+	\end{cases*}\]
+	Vale in particolare che $ \sgn(\sigma_1 \circ \sigma_2) = \sgn(\sigma_1) \cdot \sgn(\sigma_2) $
+\end{definition}
+
+\begin{prop}
+	Sia $ \sigma \in \Sigma_n $ una permutazione e sia $ \sigma^{-1} $ la permutazione inversa. Allora $ \sgn(\sigma) = \sgn(\sigma^{-1}) $. 
+\end{prop}
+
+\begin{thm}[Unicità del determinante]
+	Sia $ \mathrm{Mat}_{n \times n} (\K) $  lo spazio vettoriale delle matrici quadrate  a valori nel campo $ \K $. Esiste una ed una sola funzione da $ \mathrm{Mat}_{n \times n} (\K) $ in $ \K $ funzione delle righe (o delle colonne) di una matrice $ A $ che rispetta i seguenti tre assiomi:  
+	\begin{enumerate}[label = (\roman*)]
+		\item \emph{multilineare} (lineare in ogni riga o colonna);
+		\item \emph{alternante} (cambia di segno se si scambiano due righe o due colonne);
+		\item \emph{normalizzata} (l'immagine dell'identità è 1);
+	\end{enumerate}
+	Tale funzione viene detta determinante ed indicata con $ \det \colon \mathrm{Mat}_{n \times n} (\K) \to \K $. 
+\end{thm}
+
+\begin{propriety}[del determinante]
+	Le seguenti proprietà sono conseguenza degli assiomi (i), (ii) e (iii). Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ allora
+	\begin{enumerate}[label = (\arabic*)]
+		\item Se $ A $ ha due righe uguali allora $ \det{A} = 0 $.
+		\item Se $ A $ ha una riga nulla allora $ \det{A} = 0 $.
+		\item Se alla riga $ A_i $ di $ A $ si somma un multiplo della riga $ A_j $ ($ i \neq j $) si ottiene una matrice $ B $ tale che $ \det A = \det B $. 
+		\item Il determinante è invariante sotto l'algoritmo di Gauss (escludendo le mosse di \emph{normalizzazione} delle righe o delle colonne) a meno di un segno che dipende dal numero di scambi di righe o di colonne fatto. In altre parole se $ S $ è una forma a scalini di $ A $ allora $ \det A = \pm \det S $.
+		\item Se $ A $ è una matrice diagonale allora il suo determinante è il prodotto degli elementi sulla diagonale: $ \det A = a_{11} \cdots a_{nn} $. 
+		\item $ A $ è invertibile $ \iff $ $ \det A \neq 0 $ ($ \iff $ $ \rg A = n $). 
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}[esistenza del determinante]
+	Sia $ A = (a_{ij})_{\substack{i = 1, \ldots, n \\ j = 1, \ldots, n}} \in \mathrm{Mat}_{n \times n} (\K) $. La funzione \[\det(A) = \sum_{\sigma \in \Sigma_n} \sgn(\sigma) \cdot a_{1 \sigma(1)} a_{2 \sigma(2)} \cdots a_{n \sigma{n}}\] è il determinante (in quanto è una funzione multilineare, alternante e normalizzata dallo spazio delle matrici nel campo). 
+\end{thm}
+
+\begin{corollary}
+	Il determinante di $ A $ è uguale al determinante della sua trasposta: $ \det A = \det A^{t} $. 
+\end{corollary}
+
+\begin{definition}[complemento algebrico]
+	Il complemento algebrico o cofattore dell'elemento $ a_{ij} $ di una matrice $ A \in \mathrm{Mat}_{n \times n} (\K) $ è il determinante della matrice $ (n - 1) \times (n - 1) $ ottenuta cancellando da $ A $ la $ i $-esima riga e la $ j $-esima colonna moltiplicato per $ (-1)^{i + j} $: in formule
+	\[\cof_{ij}(A) = (-1)^{i + j} \cdot \det 
+	\begin{pmatrix}
+		a_{11} & \cdots & \cancel{a_{1j}} & \cdots & a_{1n} \\
+		\vdots &        & \vdots &        & \vdots \\
+		\cancel{a_{i1}} & \cdots & \cancel{a_{ij}} & \cdots & \cancel{a_{in}} \\
+		\vdots &  		& \vdots &  	  & \vdots \\
+		a_{n1} & \cdots & \cancel{a_{nj}} & \cdots & a_{nn} \\
+	\end{pmatrix}\]
+\end{definition}
+
+\begin{thm}[sviluppo di Laplace]
+	Data $ A \in \mathrm{Mat}_{n \times n} (\K) $ la seguente funzione
+	\begin{itemize}
+		\item fissata una riga $ i $ di $ A $: $ \det A = \sum_{j = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
+		\item fissata una colonna $ j $ di $ A $: $ \det A = \sum_{i = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
+	\end{itemize}
+	verifica gli assiomi (i), (ii) e (iii) e quindi è il determinante. 
+\end{thm}
+
+\clearpage
+
+\section{Diagonalizzazione, autovettori e autovalori}
 
 \end{document}
