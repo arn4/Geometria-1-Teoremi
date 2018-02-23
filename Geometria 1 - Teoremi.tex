@@ -30,6 +30,7 @@
 \newcommand{\cof}{\mathrm{cof}}
 \newcommand{\scprd}[2]{\langle #1, #2 \rangle}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Id}{\mathrm{Id}}
 
 \newtheoremstyle{mythm}{\topsep}{\topsep}{\rmfamily}{}{\bfseries}{}{.5em}{}
 
@@ -720,5 +721,86 @@ Roba su riduzione a scalini...
 \clearpage
 
 \section{Diagonalizzazione, autovettori e autovalori}
+
+\begin{definition}[autovettore, autovalore]
+	\letvs. Sia $ T \colon V \to V $ un endomorfismo su $ V $. $ V \in V \setminus \{O_V\} $ si dice autovettore di $ T $ se esiste $ \lambda \in \K $ tale che \[T(v) = \lambda v.\] Si dice in questo caso che $ \lambda $ è autovalore per $ T $ (relativo a $ v $). \\
+	Notiamo che tutti i $ v \in \ker V \setminus \{O_V\} $ sono autovettori per $ v $ con autovalore 0.  
+\end{definition}
+
+\begin{definition}[autospazio]
+	Dato $ \lambda \in \K $ chiamiamo $ V_\lambda = \{v \in V : T(v) = \lambda v\} $ l'autospazio relativo a $ \lambda $. Segue dalla definizione che $ V_\lambda = \ker \left(T - \lambda \cdot \Id\right) $
+\end{definition}
+
+\begin{prop}
+	Se $ v_1, \ldots, v_n \in V $ sono autovettori per $ T $ con relativi autovalori $ \lambda_1, \ldots, \lambda_n \in \K $ e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ è una base di $ V $ allora la matrice di $ T $ rispetto a $ \mathscr{B} $ (sia in partenza che in arrivo) è diagonale. 
+	\[[T]_{\mathscr{B}}^{\mathscr{B}} = 
+	\begin{pmatrix}
+	\lambda_1 & \cdots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \ldots & \lambda_n \\
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{definition}[polinomio caratteristico]
+	Sia $ T \colon V \to V $ un endomorfismo. Fissata una base $ \mathscr{B} = \{v_1, \ldots, v_n\} $ di $ V $ chiamiamo \[p_T(t) = \det \left(t \cdot \Id - [T]_{\mathscr{B}}^{\mathscr{B}}\right)\] il polinomio caratteristico di $ T $. 
+\end{definition}
+
+\begin{prop}
+	Il polinomio caratteristico non dipende dalla base scelta. In altri termini se $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{v'_1, \ldots, v'_n\} $ sono basi di $ V $ allora \[p_T(t) = \det \left(t \cdot \Id - [T]_{\mathscr{B}}^{\mathscr{B}}\right) = \det \left(t \cdot \Id - [T]_{\mathscr{B}'}^{\mathscr{B}'}\right) = \det \left(t \cdot \Id - T\right)\]
+\end{prop}
+
+\begin{thm}
+	Sia $ T \colon V \to V $ un endomorfismo. Allora $ \lambda \in \K $ è un autovalore di $ T $ se e solo se $ \lambda $ è radice di $ p_T(t) $, ossia $ p_T(\lambda) = 0 $. 
+\end{thm}
+
+Strategia in 4 passi:
+\begin{enumerate}
+	\item Calcolare il polinomio caratteristico e trovarne le radici.
+	\item Detti $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ calcolo $ V_{\lambda_1} = \ker(T - \lambda_1 \Id), \ldots, V_{\lambda_k} = \ker(T - \lambda_k \Id) $
+	\item Osservo che questi sottospazi sono in somma diretta e quindi 
+	\begin{itemize}
+		\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} = V $ allora $ T $ si diagonalizza e una base per $ V $ è data dall'unione delle basi dei $ V_{\lambda_j} $;
+		\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} \subset V $ allora $ T $ non è diagonalizzabile.
+	\end{itemize}
+	\item Usando la base trovata, se $ T $ è diagonalizzabile, si scrive la matrice diagonale corrispondente (sulla diagonale ci sono tanti $ \lambda_i $ tanti quanti la $ \dim V_{\lambda_i} $). 
+\end{enumerate}
+
+\begin{thm}
+	Dati $ \lambda_1, \ldots, \lambda_k $ autovalori di $ T $ a due a due distinti, siano $ v_1, \ldots, v_k $ gli autovettori corrispondenti: $ T(v_1) = \lambda_1 v_1, \ldots, T(v_k) = \lambda_k v_k $. Allora $ v_1, \ldots, v_k $ sono linearmente indipendenti. 
+\end{thm}
+
+\begin{thm}[somma diretta degli autospazi]
+	Sia $ T \colon V \to V $ un endomorfismo e $ \lambda_1, \ldots, \lambda_k $ autovalori di $ T $ a due a due distinti. Allora gli autospazi $ V_{\lambda_1}, \ldots, V_{\lambda_k} $ sono in somma diretta. \\
+	Più in generale se $ A_1, \ldots, A_k $ sottospazi di $ V $ sono tali che per ogni insieme $ \{v_1, \ldots, v_k\} $ di vettori non nulli linearmente indipendenti tali che $ v_i \in A_i $, allora $ A_1, \ldots, A_k $ sono in somma diretta. 
+\end{thm}
+
+\begin{definition}[molteplicità algebrica e geometrica]
+	Sia $ T \colon V \to V $ un endomorfismo e sia \[p_T(t) = (t - \lambda_1)^{a_1} \cdots (t - \lambda_k)^{a_k} \cdot f(t)\] il polinomio caratteristico dove $ \lambda_1, \ldots, \lambda_k $ sono le radici del polinomio, i.e autovalori di $ T $, e $ f(t) $ un polinomio irriducibile in $ \K $. Diremo che $ a_i $ è la molteplicità algebrica dell'autovalore $ \lambda_i $. Diremo inoltre che $ m_i = \dim V_{\lambda_i} $ è la molteplicità geometrica di $ \lambda_i $. \\
+	Notiamo che se $ T $ è diagonalizzabile allora $ f(t) = 1 $. 
+\end{definition}
+
+\begin{thm}
+	Sia $ T \colon V \to V $ un endomorfismo e $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ autovalori. Allora $ \forall i = 1, \ldots, k $ vale $ 1 \leq m_i \leq a_i $ (molteplicità geometrica $ \leq $ molteplicità algebrica). 
+\end{thm}
+
+\begin{thm}
+	Sia $ T \colon V \to V $ un endomorfismo. Allora $ T $ è diagonalizzabile se e solo se $ f(t) = 1 $ (il polinomio si fattorizza completamente nel campo) e $ \forall \lambda_i $ autovalore $ m_i = a_i $. 
+\end{thm}
+
+\begin{definition}[polinomio minimo]
+	Sia $ T \colon V \to V $ un endomorfismo. Chiamiamo polinomio minimo di $ T $ il polinomio di grado più piccolo (\emph{wlog} monico) $ \mu_T(t) \in \K[t] $ tale che \[\mu_T(T) = T^j + \ldots + b_1 T + b_0 \Id = 0.\] 
+\end{definition}
+
+\begin{thm}
+	Sia $ T \colon V \to V $ un endomorfismo. Se $ h(t) \in \K[t] $ soddisfa la proprietà $ h(T) = 0 $ allora $ \mu_T(t) $ divide $ h(t) $. 
+\end{thm}
+
+\begin{thm}[di Hamilton - Cayley]
+	Dato $ T \colon V \to V $ endomorfismo vale che $ p_T(T) = 0 $ e quindi che il polinomio minimo divide il polinomio caratteristico. 
+\end{thm}
+
+\begin{thm}[triangolazione]
+	Data una qualunque matrice $ M \in \mathrm{Mat}_{n \times n} (\C) $ esiste una matrice $ C $ invertibile (matrice di cambio base) tale che $ CMC^{-1} $ è traingolare superiore. L'enunciato vale in generale quando su $ \mathrm{Mat}_{n \times n} (\K) $ quando il polinomio caratteristico ha tutte le radici nel campo. \\ Moralmente ogni matrice è triangolarizzabile. 
+\end{thm}
 
 \end{document}
