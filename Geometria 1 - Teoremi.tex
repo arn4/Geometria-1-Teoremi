@@ -684,7 +684,7 @@ Roba su riduzione a scalini...
 	Tale funzione viene detta determinante ed indicata con $ \det \colon \mathrm{Mat}_{n \times n} (\K) \to \K $. 
 \end{thm}
 
-\begin{propriety}[del determinante]
+\begin{propriety}[del determinante] \label{prop:det}
 	Le seguenti proprietà sono conseguenza degli assiomi (i), (ii) e (iii). Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ allora
 	\begin{enumerate}[label = (\arabic*)]
 		\item Se $ A $ ha due righe uguali allora $ \det{A} = 0 $.
@@ -721,7 +721,8 @@ Roba su riduzione a scalini...
 		\item fissata una riga $ i $ di $ A $: $ \det A = \sum_{j = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
 		\item fissata una colonna $ j $ di $ A $: $ \det A = \sum_{i = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
 	\end{itemize}
-	verifica gli assiomi (i), (ii) e (iii) e quindi è il determinante. 
+	verifica gli assiomi (i), (ii) e (iii) e quindi è il determinante. \\
+	Dallo sviluppo di Laplace si deduce che la proprietà (5) di Proprietà \ref{prop:det} vale anche per le matrici triangolari (superiori o inferiori)
 \end{thm}
 
 \begin{thm}[invertibilità]
@@ -787,6 +788,37 @@ Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $
 	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $. Allora il rango di $ A $ è il massimo ordine di una sottomatrice quadrata invertibile, i.e con determinante non nullo. \\
 	In altri termini $ \rg A = k $ $ \iff $ tra tutte le sottomatrici di $ A $ esiste una sottomatrice $ k \times k $ con determinante $ \neq 0 $ tale che tutte le sottomatrici quadrate di ordine maggiore hanno determinante nullo. Per lo sviluppo di Laplace è sufficiente verificare che tutte le sottomatrici $ (k + 1) \times (k + 1) $ hanno determinante nullo. 
 \end{thm}
+
+\begin{propriety}[del determinante]
+	Valgono le seguenti identità aggiuntive. 
+	\begin{enumerate}
+		\item Se $ M = \begin{pmatrix}[c|c]
+		A & B \\ \hline
+		C & D
+		\end{pmatrix} $	
+		è una matrice a blocchi con $ A $ matrice invertibile allora $ \det{M} = \det{(A)} \cdot \det{(D - CA^{-1}B)} $. Inoltre che $ AC = CA $ allora $ \det{M} = \det{AD - CB} $. 
+		\item Se $ M $ è una matrice diagonale a blocchi allora il determinante è il prodotto dei determinanti dei blocchi diagonali $ A_1, \ldots A_k $. 
+		\[\det{M} = \det
+		\begin{pmatrix}
+		A_1		&		&		&		&		 \\
+				& A_2	&		&		&		 \\
+				& 		&\ddots &		&		 \\	 
+				& 		&		& A_{k - 1}		&		 \\	
+				& 		& &		& A_{k}		 \\	 		 		
+		\end{pmatrix}
+		= \det{(A_1)} \cdots \det{(A_k)}\]
+		\item Se $ M $ è una \emph{matrice di Vandermonde} allora vale che 
+		\[\det{(M)} = \det 
+		\begin{pmatrix}
+			1 & 1 & \cdots & 1 \\
+			a_1 & a_2 & \cdots & a_n \\
+			a_1^{2} & a_2^{2} & \cdots & a_n^{2} \\
+			\vdots & \vdots & & \vdots \\
+			a_1^{n} & a_2^{n} & \cdots & a_n^{n} \\
+		\end{pmatrix} 
+		= \prod_{\substack{i = 1 \\ j < i}}^{n} (a_i - a_j)\]
+	\end{enumerate}
+\end{propriety}
 
 \clearpage
 
