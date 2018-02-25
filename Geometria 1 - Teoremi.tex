@@ -10,9 +10,16 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{amsthm}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{cancel}
+\usepackage{framed}
 
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
@@ -685,7 +692,6 @@ Roba su riduzione a scalini...
 		\item Se alla riga $ A_i $ di $ A $ si somma un multiplo della riga $ A_j $ ($ i \neq j $) si ottiene una matrice $ B $ tale che $ \det A = \det B $. 
 		\item Il determinante è invariante sotto l'algoritmo di Gauss (escludendo le mosse di \emph{normalizzazione} delle righe o delle colonne) a meno di un segno che dipende dal numero di scambi di righe o di colonne fatto. In altre parole se $ S $ è una forma a scalini di $ A $ allora $ \det A = \pm \det S $.
 		\item Se $ A $ è una matrice diagonale allora il suo determinante è il prodotto degli elementi sulla diagonale: $ \det A = a_{11} \cdots a_{nn} $. 
-		\item $ A $ è invertibile $ \iff $ $ \det A \neq 0 $ ($ \iff $ $ \rg A = n $). 
 	\end{enumerate}
 \end{propriety}
 
@@ -716,6 +722,70 @@ Roba su riduzione a scalini...
 		\item fissata una colonna $ j $ di $ A $: $ \det A = \sum_{i = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
 	\end{itemize}
 	verifica gli assiomi (i), (ii) e (iii) e quindi è il determinante. 
+\end{thm}
+
+\begin{thm}[invertibilità]
+	$ A $ è invertibile $ \iff $ $ \det{A} \neq 0 $ ($ \iff $ $ \rg A = n $).
+\end{thm}
+
+\begin{prop}[formula per l'inversa]
+Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $. Allora il coefficiente $ ij $ della matrice inversa è \[\left(A^{-1}\right)_{ij} = \frac{1}{\det{A}} \cdot \cof_{ji}{(A)}\] dove $ \cof_{ji}{(A)} $ è il complemento algebrico dell'elemento $ a_{ji} $ di $ A $ (sì, gli indici sono scambiati).   
+\end{prop}
+
+\begin{thm}[regola di Cramer]
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e $ \det A \neq 0 $ (e $ \rg A = n $), e siano $ A^{1}, \ldots, A^{n} $ le sue colonne. Siano inoltre $ b = (b_j) $ un vettori colonna. Allora se $ x = (x_j) $ è l'unico vettore colonna che soddisfa il sistema lineare 
+	\[Ax = b \quad \iff \quad A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix} \quad \iff \quad x_1 A^{1} + \ldots x_n A^{n} = b\]
+	ha componenti date da 
+	\[x_j = \frac{\det{\left(A^{1} \cdots A^{j - 1} \ b \ A^{j + 1} \ldots A^{n}\right)}}{\det{A}}\]
+	dove per $ A^{1} \cdots A^{j - 1} \ b \ A^{j + 1} \ldots A^{n} $ si intende la matrice $ A $ alla cui $ j $-esima colonna è stato sostituito il vettore colonna $ b $ dei termini noti.  
+\end{thm}
+
+\begin{corollary}
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ e $ \cof{A} $ la matrice dei cofattori. Allora vale la seguente identità \[A (\cof{A})^{t} = \det{(A)} \cdot \Id\]
+\end{corollary}
+
+\begin{thm}[di Binet]
+	Date $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ vale $ \det{(AB)} = \det{(A)} \cdot \det{(B)} $. 
+\end{thm}
+
+\begin{corollary}[determinante dell'inversa]
+	Se $ A \in \mathrm{Mat}_{n \times n} (\K) $ è invertivile, i.e. $ \det{A} \neq 0 $, allora $ \det{A^{-1}} = \frac{1}{\det{A}} $. 
+\end{corollary}
+
+\begin{corollary}
+	Per ogni $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ vale $ \det{AB} = \det{BA} $.
+\end{corollary}
+
+\begin{corollary}[invarianza del determinatane per coniugio]
+	Siano $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ matrice invertibile. Allora $ \det{(B^{-1} A B)} = \det{(A)} $. \\
+	In altri termini se $ [A] $ e $ [A'] $ sono matrici che descrivono lo stesso endomorfismo $ A \colon V \to V $ ma scritte in basi (in partenza ed in arrivo) diverse allora $ \det{[A]} = \det{[A']} $. Dunque è il determinante è ben definito come funzione dagli endomorfismi $ \mathscr{L}(V) $ nel campo $ \K $ . 
+\end{corollary}
+
+\begin{definition}[sottomatrice]
+	Sia $ M \in \mathrm{Mat}_{n \times m} (\K) $ una matrice qualsiasi. Per sottomatrice di $ M $ si intende una ottenuta da $ M $ cancellando alcune righe e/o alcune colonne di $ M $. In modo equivalente si intende una $ M' \in \mathrm{Mat}_{r \times s} (\K) $ ottenuta da $ M $ selezionando i coefficienti posti nell'intersezione tra $ 1 \leq r \leq n $ righe ed $ 1 \leq s \leq m $ colonne scelte nella matrice $ M $. Nel caso di sottomatrice quadrate si ha $ r = s = k $ e si dice che l'ordine di $ M' $ è $ k $. 
+\end{definition}
+
+\begin{prop}
+	Se $ v_1 = \begin{pmatrix} v_{11} \\ v_{n1} \end{pmatrix}, \ldots, v_k = \begin{pmatrix} v_{1k} \\ v_{nk} \end{pmatrix} $ con $ k \leq n $ sono vettori linearmente \emph{dipendenti} allora ogni sottomatrice quadrata di ordine $ k $ estratta dalla matrice $ M \in \mathrm{Mat}_{n \times k} (\K) $ che ha per colonne $ v_1, \ldots, v_k $ non invertibile e quindi con determinante nullo. 
+	\[M = \begin{pmatrix}[c|c|c]
+	v_{11} & & v_{1k} \\
+	\vdots & \cdots & \vdots \\
+	v_{n1} & & v_{nk}
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{prop}
+	Se $ v_1 = \begin{pmatrix} v_{11} \\ v_{1n} \end{pmatrix}, \ldots, v_k = \begin{pmatrix} v_{k1} \\ v_{kn} \end{pmatrix} $ con $ k \leq n $ sono vettori linearmente \emph{indipendenti} allora esiste una sottomatrice quadrata di ordine $ k $ estratta dalla matrice $ M \in \mathrm{Mat}_{n \times k} (\K) $ che ha per colonne $ v_1, \ldots, v_k $ invertibile e quindi con determinante non nullo. 
+	\[M = \begin{pmatrix}[c|c|c]
+	v_{11} & & v_{1k} \\
+	\vdots & \cdots & \vdots \\
+	v_{n1} & & v_{nk}
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{thm}[caratterizzazione del rango con il determinante]
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $. Allora il rango di $ A $ è il massimo ordine di una sottomatrice quadrata invertibile, i.e con determinante non nullo. \\
+	In altri termini $ \rg A = k $ $ \iff $ tra tutte le sottomatrici di $ A $ esiste una sottomatrice $ k \times k $ con determinante $ \neq 0 $ tale che tutte le sottomatrici quadrate di ordine maggiore hanno determinante nullo. Per lo sviluppo di Laplace è sufficiente verificare che tutte le sottomatrici $ (k + 1) \times (k + 1) $ hanno determinante nullo. 
 \end{thm}
 
 \clearpage
@@ -753,18 +823,6 @@ Roba su riduzione a scalini...
 	Sia $ T \colon V \to V $ un endomorfismo. Allora $ \lambda \in \K $ è un autovalore di $ T $ se e solo se $ \lambda $ è radice di $ p_T(t) $, ossia $ p_T(\lambda) = 0 $. 
 \end{thm}
 
-Strategia in 4 passi:
-\begin{enumerate}
-	\item Calcolare il polinomio caratteristico e trovarne le radici.
-	\item Detti $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ calcolo $ V_{\lambda_1} = \ker(T - \lambda_1 \Id), \ldots, V_{\lambda_k} = \ker(T - \lambda_k \Id) $
-	\item Osservo che questi sottospazi sono in somma diretta e quindi 
-	\begin{itemize}
-		\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} = V $ allora $ T $ si diagonalizza e una base per $ V $ è data dall'unione delle basi dei $ V_{\lambda_j} $;
-		\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} \subset V $ allora $ T $ non è diagonalizzabile.
-	\end{itemize}
-	\item Usando la base trovata, se $ T $ è diagonalizzabile, si scrive la matrice diagonale corrispondente (sulla diagonale ci sono tanti $ \lambda_i $ tanti quanti la $ \dim V_{\lambda_i} $). 
-\end{enumerate}
-
 \begin{thm}
 	Dati $ \lambda_1, \ldots, \lambda_k $ autovalori di $ T $ a due a due distinti, siano $ v_1, \ldots, v_k $ gli autovettori corrispondenti: $ T(v_1) = \lambda_1 v_1, \ldots, T(v_k) = \lambda_k v_k $. Allora $ v_1, \ldots, v_k $ sono linearmente indipendenti. 
 \end{thm}
@@ -783,6 +841,10 @@ Strategia in 4 passi:
 	Sia $ T \colon V \to V $ un endomorfismo e $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ autovalori. Allora $ \forall i = 1, \ldots, k $ vale $ 1 \leq m_i \leq a_i $ (molteplicità geometrica $ \leq $ molteplicità algebrica). 
 \end{thm}
 
+\begin{corollary}[criterio sufficiente per la diagonalizzazione]
+	Sia $ T \colon V \to V $ un endomorfismo e $ p_T(t) $ il suo polinomio caratteristico. Se $ p_T(t) $ ha tutte le radici in $ \K $ a due a due distinte allora $ T $ è diagonalizzabile. 
+\end{corollary}
+
 \begin{thm}
 	Sia $ T \colon V \to V $ un endomorfismo. Allora $ T $ è diagonalizzabile se e solo se $ f(t) = 1 $ (il polinomio si fattorizza completamente nel campo) e $ \forall \lambda_i $ autovalore $ m_i = a_i $. 
 \end{thm}
@@ -795,12 +857,43 @@ Strategia in 4 passi:
 	Sia $ T \colon V \to V $ un endomorfismo. Se $ h(t) \in \K[t] $ soddisfa la proprietà $ h(T) = 0 $ allora $ \mu_T(t) $ divide $ h(t) $. 
 \end{thm}
 
-\begin{thm}[di Hamilton - Cayley]
+\begin{thm}[di Hamilton - Cayley] \label{thm:HC}
 	Dato $ T \colon V \to V $ endomorfismo vale che $ p_T(T) = 0 $ e quindi che il polinomio minimo divide il polinomio caratteristico. 
 \end{thm}
 
+\begin{prop}
+	Sia $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ matrice quadrata invertibile. Allora se $ q(t) = c_n t^{n} + \ldots + c_1 t + c_0 $ un polinomio vale \[q(B^{-1} A B) = B^{-1} p(A) B. \] Se $ T \colon V \to V $ è un endomorfismo  e $ q(t) = p_T(t) $ è il polinomio caratteristico di $ T $ (o un qualsiasi polinomio tale che $ q(T) = 0 $) si ha che $ p_T(T) = 0 \Leftrightarrow p_T(B^{-1} T B) = 0 $ e quindi il polinomio minimo non dipende dalla base e l'enunciato del Teorema \ref{thm:HC} non dipende dalla base scelta per $ V $. 
+\end{prop}
+
+\begin{prop}
+	$ T \colon V \to V $ endomorfismo è diagonalizzabile se e solo se le radici del polinomio minimo $ \mu_T(t) $ hanno molteplicità algebrica 1, ovvero $ \mu_T(t) $ non ha radici doppie. 
+\end{prop}
+
+\begin{prop}
+	Sia $ T \colon V \to V $ un endomorfismo, $ p_T(t) $ il polinomio caratteristico e $ \mu_T(t) $ il polinomio minimo. Allora $ p_T(\lambda) = 0 \Rightarrow \mu_T(\lambda) = 0 $. 
+\end{prop}
+
 \begin{thm}[triangolazione]
-	Data una qualunque matrice $ M \in \mathrm{Mat}_{n \times n} (\C) $ esiste una matrice $ C $ invertibile (matrice di cambio base) tale che $ CMC^{-1} $ è traingolare superiore. L'enunciato vale in generale quando su $ \mathrm{Mat}_{n \times n} (\K) $ quando il polinomio caratteristico ha tutte le radici nel campo. \\ Moralmente ogni matrice è triangolarizzabile. 
+	Data una qualunque matrice $ M \in \mathrm{Mat}_{n \times n} (\C) $ esiste una matrice $ C $ invertibile (matrice di cambio base) tale che $ CMC^{-1} $ è triangolare superiore. L'enunciato vale in generale su $ \mathrm{Mat}_{n \times n} (\K) $ quando il polinomio caratteristico ha tutte le radici nel campo. \\ Moralmente ogni matrice è triangolarizzabile. 
 \end{thm}
+
+\vspace{2mm}
+
+\begin{framed}
+	\begin{center}
+		\textbf{Diagonalizzazione - una strategia in 4 passi}
+	\end{center}
+	\begin{enumerate}
+		\item Calcolare il polinomio caratteristico e trovarne le radici. Se il polinomio minimo non si fattorizza completamente nel campo, $ T $ non è diagonalizzabile. 
+		\item Detti $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ calcolo $ V_{\lambda_1} = \ker(T - \lambda_1 \Id), \ldots, V_{\lambda_k} = \ker(T - \lambda_k \Id) $
+		\item Osservo che questi sottospazi sono in somma diretta e quindi 
+			\begin{itemize}
+				\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} = V $ allora $ T $ si diagonalizza e una base per $ V $ è data dall'unione delle basi dei $ V_{\lambda_j} $;
+				\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} \subset V $ allora $ T $ non è diagonalizzabile.
+			\end{itemize} 
+		Se voglio solo sapere se $ T $ è diagonalizzabile è sufficiente confrontare la molteplicità algebrica $ a_i $ delle radici del polinomio caratteristico $ \lambda_i $ con la molteplicità geometrica $ m_i = \dim V_{\lambda_i} = \dim \ker (T - \lambda_i \Id) $. Se per ogni $ i $ vale $ a_i = m_i $ allora $ T $ è diagonalizzabile, altrimenti non lo è. 
+		\item Usando la base trovata, se $ T $ è diagonalizzabile, si scrive la matrice diagonale corrispondente (i coefficienti sono zeri tranne sulla diagonale in cui ci sono tanti $ \lambda_i $ tanti quanti la $ m_i = \dim V_{\lambda_i} $). 
+	\end{enumerate} 
+\end{framed}
 
 \end{document}
