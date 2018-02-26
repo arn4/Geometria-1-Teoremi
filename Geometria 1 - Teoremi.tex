@@ -355,11 +355,11 @@ Roba su riduzione a scalini...
 \end{thm}
 
 \begin{thm}
-	Sia $ L \colon V \to W $ un'applicazione lineare e $ B \colon V \to V $ lineare e invertibile. Allora vale che \[\Imm L \circ B = \Imm L \quad \mathrm{e} \quad \dim \Ker L \circ B = \dim  \Ker L\] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [B \right ] $ è la matrice invertibile delle mosse di colonna associata a $ B $, la matrice $ \left [B \right ] \left [L \right ] $ è una matrice ridotta a scalini per colonna in cui lo $ Span $ delle colonne è lo stesso dello span delle colonne di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per colonne lascia invariato lo $ Span $ delle colonne. 
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ B \colon V \to V $ lineare e invertibile. Allora vale che \[\Imm L \circ B = \Imm L \quad \mathrm{e} \quad \dim \Ker L \circ B = \dim  \Ker L\] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [B \right ] $ è la matrice invertibile delle mosse di colonna associata a $ B $, la matrice $ \left [L \right ] \left [B \right ] $ è una matrice ridotta a scalini per colonna in cui lo $ Span $ delle colonne è lo stesso dello span delle colonne di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per colonne lascia invariato lo $ Span $ delle colonne. 
 \end{thm}
 
 \begin{thm}
-	Sia $ L \colon V \to W $ un'applicazione lineare e $ U \colon W \to W $ lineare e invertibile. Allora vale che \[\Ker U \circ L = \Ker L\quad \mathrm{e} \quad \dim \Imm U \circ L = \dim \Imm L  \] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [U \right ] $ è la matrice invertibile delle mosse di riga associata a $ U $, la matrice $ \left [L \right ] \left [U \right ] $ è una matrice ridotta a scalini per riga che ha lo stesso $ \Ker $ di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per righe lascia invariato lo spazio delle soluzioni di un sistema lineare omogeneo.
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ U \colon W \to W $ lineare e invertibile. Allora vale che \[\Ker U \circ L = \Ker L\quad \mathrm{e} \quad \dim \Imm U \circ L = \dim \Imm L  \] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [U \right ] $ è la matrice invertibile delle mosse di riga associata a $ U $, la matrice $ \left [U \right ] \left [L \right ] $ è una matrice ridotta a scalini per riga che ha lo stesso $ \Ker $ di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per righe lascia invariato lo spazio delle soluzioni di un sistema lineare omogeneo.
 \end{thm}
 
 \begin{definition}[rango]
@@ -825,7 +825,7 @@ Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $
 \section{Diagonalizzazione, autovettori e autovalori}
 
 \begin{definition}[autovettore, autovalore]
-	\letvs. Sia $ T \colon V \to V $ un endomorfismo su $ V $. $ V \in V \setminus \{O_V\} $ si dice autovettore di $ T $ se esiste $ \lambda \in \K $ tale che \[T(v) = \lambda v.\] Si dice in questo caso che $ \lambda $ è autovalore per $ T $ (relativo a $ v $). \\
+	\letvs. Sia $ T \colon V \to V $ un endomorfismo su $ V $. $ v \in V \setminus \{O_V\} $ si dice autovettore di $ T $ se esiste $ \lambda \in \K $ tale che \[T(v) = \lambda v.\] Si dice in questo caso che $ \lambda $ è autovalore per $ T $ (relativo a $ v $). \\
 	Notiamo che tutti i $ v \in \ker V \setminus \{O_V\} $ sono autovettori per $ v $ con autovalore 0.  
 \end{definition}
 
@@ -894,7 +894,7 @@ Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $
 \end{thm}
 
 \begin{prop}
-	Sia $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ matrice quadrata invertibile. Allora se $ q(t) = c_n t^{n} + \ldots + c_1 t + c_0 $ un polinomio vale \[q(B^{-1} A B) = B^{-1} p(A) B. \] Se $ T \colon V \to V $ è un endomorfismo  e $ q(t) = p_T(t) $ è il polinomio caratteristico di $ T $ (o un qualsiasi polinomio tale che $ q(T) = 0 $) si ha che $ p_T(T) = 0 \Leftrightarrow p_T(B^{-1} T B) = 0 $ e quindi il polinomio minimo non dipende dalla base e l'enunciato del Teorema \ref{thm:HC} non dipende dalla base scelta per $ V $. 
+	Sia $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ matrice quadrata invertibile. Allora se $ q(t) = c_n t^{n} + \ldots + c_1 t + c_0 $ un polinomio vale \[q(B^{-1} A B) = B^{-1} q(A) B. \] Se $ T \colon V \to V $ è un endomorfismo  e $ q(t) = p_T(t) $ è il polinomio caratteristico di $ T $ (o un qualsiasi polinomio tale che $ q(T) = 0 $) si ha che $ p_T(T) = 0 \Leftrightarrow p_T(B^{-1} T B) = 0 $ e quindi il polinomio minimo non dipende dalla base e l'enunciato del Teorema \ref{thm:HC} non dipende dalla base scelta per $ V $. 
 \end{prop}
 
 \begin{prop}
@@ -923,7 +923,7 @@ Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $
 				\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} = V $ allora $ T $ si diagonalizza e una base per $ V $ è data dall'unione delle basi dei $ V_{\lambda_j} $;
 				\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} \subset V $ allora $ T $ non è diagonalizzabile.
 			\end{itemize} 
-		Se voglio solo sapere se $ T $ è diagonalizzabile è sufficiente confrontare la molteplicità algebrica $ a_i $ delle radici del polinomio caratteristico $ \lambda_i $ con la molteplicità geometrica $ m_i = \dim V_{\lambda_i} = \dim \ker (T - \lambda_i \Id) $. Se per ogni $ i $ vale $ a_i = m_i $ allora $ T $ è diagonalizzabile, altrimenti non lo è. 
+		Se voglio solo sapere se $ T $ è diagonalizzabile è sufficiente confrontare la molteplicità algebrica $ a_i $ delle radici $ \lambda_i $ del polinomio caratteristico con la molteplicità geometrica $ m_i = \dim V_{\lambda_i} = \dim \ker (T - \lambda_i \Id) $. Se per ogni $ i $ vale $ a_i = m_i $ allora $ T $ è diagonalizzabile, altrimenti non lo è. 
 		\item Usando la base trovata, se $ T $ è diagonalizzabile, si scrive la matrice diagonale corrispondente (i coefficienti sono zeri tranne sulla diagonale in cui ci sono tanti $ \lambda_i $ tanti quanti la $ m_i = \dim V_{\lambda_i} $). 
 	\end{enumerate} 
 \end{framed}
