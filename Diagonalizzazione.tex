@@ -1,0 +1,131 @@
+% DIAGONALIZZAZIONE DI ENDOMORFISMI
+
+\begin{definition}[autovettore, autovalore]
+	Sia $ V $ un $ \K $-spazio vettoriale. Sia $ T \colon V \to V $ un endomorfismo su $ V $. Un vettore $ v \in V \setminus \{O_V\} $ si dice autovettore di $ T $ se esiste $ \lambda \in \K $ tale che \[T(v) = \lambda v.\] Si dice in questo caso che $ \lambda $ è autovalore per $ T $ (relativo a $ v $). \\
+	Notiamo che tutti i $ v \in \ker{V} \setminus \{O_V\} $ sono autovettori per $ v $ con autovalore 0.  
+\end{definition}
+
+\begin{definition}[autospazio]
+	Dato $ \lambda \in \K $ chiamiamo $ V_\lambda = \{v \in V : T(v) = \lambda v\} $ l'autospazio relativo a $ \lambda $. Segue dalla definizione che $ V_\lambda = \ker{\left(T - \lambda \cdot \Id\right) }$
+\end{definition}
+
+\begin{prop}
+	Se $ v_1, \ldots, v_n \in V $ sono autovettori per $ T $ con relativi autovalori $ \lambda_1, \ldots, \lambda_n \in \K $ e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ è una base di $ V $ allora la matrice di $ T \in \End{(V)} $ rispetto a $ \mathscr{B} $ (sia in partenza che in arrivo) è diagonale. 
+	\[[T]_{\mathscr{B}}^{\mathscr{B}} = 
+	\begin{pmatrix}
+	\lambda_1 & \cdots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \ldots & \lambda_n \\
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{definition}[polinomio caratteristico]
+	Sia $ T \in \End{(V)} $. Fissata una base $ \mathscr{B} = \{v_1, \ldots, v_n\} $ di $ V $ chiamiamo \[p_T(t) = \det \left(t \cdot \Id - [T]_{\mathscr{B}}^{\mathscr{B}}\right)\] il polinomio caratteristico di $ T $. 
+\end{definition}
+
+\begin{prop}
+	Il polinomio caratteristico non dipende dalla base scelta. In altri termini se $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{v'_1, \ldots, v'_n\} $ sono basi di $ V $ allora \[p_T(t) = \det \left(t \cdot \Id - [T]_{\mathscr{B}}^{\mathscr{B}}\right) = \det \left(t \cdot \Id - [T]_{\mathscr{B}'}^{\mathscr{B}'}\right) = \det \left(t \cdot \Id - T\right)\]
+\end{prop}
+
+\begin{thm}
+	Sia $ T \in \End{(V)} $. Allora $ \lambda \in \K $ è un autovalore di $ T $ se e solo se $ \lambda $ è radice di $ p_T(t) $, ossia $ p_T(\lambda) = 0 $. 
+\end{thm}
+
+\begin{thm}
+	Dati $ \lambda_1, \ldots, \lambda_k $ autovalori di $ T \in \End{(V)} $ a due a due distinti, siano $ v_1, \ldots, v_k $ gli autovettori corrispondenti: $ T(v_1) = \lambda_1 v_1, \ldots, T(v_k) = \lambda_k v_k $. Allora $ v_1, \ldots, v_k $ sono linearmente indipendenti. 
+\end{thm}
+
+\begin{thm}[somma diretta degli autospazi]
+	Sia $ T \in \End{(V)} $ e $ \lambda_1, \ldots, \lambda_k $ autovalori di $ T $ a due a due distinti. Allora gli autospazi $ V_{\lambda_1}, \ldots, V_{\lambda_k} $ sono in somma diretta. \\
+	Più in generale se $ A_1, \ldots, A_k $ sottospazi di $ V $ sono tali che per ogni insieme $ \{v_1, \ldots, v_k\} $ di vettori non nulli linearmente indipendenti tali che $ v_i \in A_i $, allora $ A_1, \ldots, A_k $ sono in somma diretta. 
+\end{thm}
+
+\begin{definition}[molteplicità algebrica e geometrica]
+	Sia $ T \in \End{(V)} $ e \[p_T(t) = (t - \lambda_1)^{a_1} \cdots (t - \lambda_k)^{a_k} \cdot f(t)\] il polinomio caratteristico dove $ \lambda_1, \ldots, \lambda_k $ sono le radici del polinomio, i.e autovalori di $ T $, e $ f(t) $ un polinomio irriducibile in $ \K[t] $. Diremo che $ a_i $ è la molteplicità algebrica dell'autovalore $ \lambda_i $. Diremo inoltre che $ m_i = \dim{V_{\lambda_i}} $ è la molteplicità geometrica di $ \lambda_i $. \\
+	Notiamo che se $ T $ è diagonalizzabile allora $ f(t) = 1 $. 
+\end{definition}
+
+\begin{thm}
+	Sia $ T \in \End{(V)} $ e $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ autovalori. Allora $ \forall i = 1, \ldots, k $ vale $ 1 \leq m_i \leq a_i $ (molteplicità geometrica $ \leq $ molteplicità algebrica). 
+\end{thm}
+
+\begin{corollary}[criterio sufficiente per la diagonalizzazione]
+	Sia $ T \colon V \to V $ un endomorfismo e $ p_T(t) $ il suo polinomio caratteristico. Se $ p_T(t) $ ha tutte le radici in $ \K $ a due a due distinte allora $ T $ è diagonalizzabile. 
+\end{corollary}
+
+\begin{thm}
+	Sia $ T \in \End{(V)} $. Allora $ T $ è diagonalizzabile se e solo se $ f(t) = 1 $ (il polinomio si fattorizza completamente nel campo) e $ \forall \lambda_i $ autovalore $ m_i = a_i $. 
+\end{thm}
+
+\begin{definition}[polinomio minimo]
+	Sia $ T \in \End{(V)} $. Chiamiamo polinomio minimo di $ T $ il polinomio di grado più piccolo (\emph{wlog} monico) $ \mu_T(t) \in \K[t] $ tale che \[\mu_T(T) = T^j + \ldots + b_1 T + b_0 \Id = 0.\] 
+\end{definition}
+
+\begin{thm}
+	Sia $ T \in \End{(V)} $. Se $ h(t) \in \K[t] $ soddisfa la proprietà $ h(T) = 0 $ allora $ \mu_T(t) $ divide $ h(t) $. 
+\end{thm}
+
+\begin{thm}[di Hamilton - Cayley] \label{thm:HC}
+	Dato $ T \colon V \to V $ endomorfismo vale che $ p_T(T) = 0 $ e quindi che il polinomio minimo divide il polinomio caratteristico. 
+\end{thm}
+
+\begin{prop}
+	Sia $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ invertibile. Allora se $ q(t) = c_n t^{n} + \ldots + c_1 t + c_0 $ è un polinomio in $ \K[t] $ vale \[q(B^{-1} A B) = B^{-1} q(A) B. \] Se $ T \in \End{(V)} $ e $ q(t) = p_T(t) $ è il polinomio caratteristico di $ T $ (o un qualsiasi polinomio tale che $ q(T) = 0 $) si ha che $ p_T(T) = 0 \iff p_T(B^{-1} T B) = 0 $ e quindi il polinomio minimo non dipende dalla base e l'enunciato del Teorema \ref{thm:HC} non dipende dalla base scelta per $ V $. 
+\end{prop}
+
+\begin{prop}
+	$ T \in \End{(V)} $ è diagonalizzabile se e solo se le radici del polinomio minimo $ \mu_T(t) $ hanno molteplicità algebrica 1, ovvero $ \mu_T(t) $ non ha radici doppie. 
+\end{prop}
+
+\begin{prop}
+	Sia $ T \in \End{(V)} $, $ p_T(t) $ il polinomio caratteristico e $ \mu_T(t) $ il polinomio minimo. Allora $ p_T(\lambda) = 0 \iff \mu_T(\lambda) = 0 $. 
+\end{prop}
+
+\begin{thm}[triangolazione]
+	Data una qualunque matrice $ M \in \mathrm{Mat}_{n \times n} (\K) $ con $ \K $ algebricamente chiuso (i.e. ogni polinomio in $ \K[t] $ è irriducibile, per esempio $ \K = \C $) esiste una matrice $ C $ invertibile (matrice di cambio base) tale che $ CMC^{-1} $ è triangolare superiore. \\ Moralmente ogni matrice è triangolabile. 
+\end{thm}
+
+\begin{prop}
+	Siano $ T, S \in \End{(V)} $ diagonalizzabili tali che $ TS = ST $. Allora $ S $ preserva gli autospazi di $ T $ e viceversa: se $ V_{\lambda} $ è autospazio di $ T $ allora $ S(V_{\lambda}) \subseteq V_{\lambda} $. 
+\end{prop}
+
+\begin{thm}[diagonalizzazione simultanea]
+	Siano $ T, S \in \End{(V)} $ diagonalizzabili. Allora $ T $ e $ S $ sono simultaneamente diagonalizzabili (i.e. esiste una base che diagonalizza entrambe) se e solo se $ TS = ST $.
+\end{thm}
+
+\begin{thm}
+	Sia $ V $ un $ \K $-spazio vettoriale, $ f \in \End{(V)} $ diagonalizzabile e $ W $ un sottospazio di $ V $. Allora \[W = (W \cap V_{\lambda_1}) \oplus \cdots \oplus (W \cap V_{\lambda_k})\] dove $ V_{\lambda_1}, \ldots, V_{\lambda_k} $ sono gli autospazi relativi agli autovalori $ \lambda_1, \ldots, \lambda_k $ di $ f $. Dunque la restrizione di $ f $ a $ W \cap V_{\lambda_j} $ è diagonalizzabile per ogni $ j $ e quindi $ f\lvert_{W} $ è diagonalizzabile.
+\end{thm}
+
+\begin{thm}[esistenza del complementare invariante]
+	Sia $ V $ un $ \K $-spazio vettoriale, $ f \in \End{(V)} $ diagonalizzabile e $ W $ un sottospazio di $ V $ $ f $-invariante. Allora esiste $ U $ sottospazio vettoriale $ f $-invariante tale che $ V = W \oplus U $. 
+\end{thm}
+
+\begin{thm}
+	Sia $ V $ un $ \K $-spazio vettoriale e $ f \in \End{(V)} $. Se esistono $ W_1, W_2 $ un sottospazi di $ V $ $ f $-invarianti tali che $ V = W_1 + W_2 $ e tali che le restrizioni di $ f $ a $ W_1 $ e $ W_2 $ sono diagonalizzabili, allora $ f $ è diagonalizzabile. 
+\end{thm}
+
+\begin{thm} \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale e $ W, U $ due sottospazi di $ V $ tali che $ V = W \oplus U $. Se $ f \colon W \to W $ e $ g \colon U \to U $ sono due applicazioni lineari si consideri $ L \colon V \to V $ data da $ L(v) = f(w) + g(u) $, dove $ v = w + u $, $ w \in W $, $ u \in U $. Allora $ L $ è diagonalizzabile se e solo se $ f $ e $ g $ sono diagonalizzabili.
+\end{thm}
+
+\clearpage
+
+\vspace{2mm}
+
+\begin{framed}
+	\begin{center}
+		\textbf{Diagonalizzazione - una strategia in 4 passi}
+	\end{center}
+	\begin{enumerate}
+		\item Dato $ T \colon V \to V $ endomorfismo, calcolo il polinomio caratteristico e ne trovo le radici ottenendo un polinomio della forma \[p_T(t) = \det{(t \Id - T)} = (t - \lambda_1)^{a_1} \cdots (t - \lambda_k)^{a_k} \cdot f(t)\] con $ f(t) $ irriducibile in $ \K[t] $. Se il polinomio caratteristico si fattorizza completamente nel campo, i.e. $ f(t) = 1 $ allora posso procedere, altrimenti $ T $ non è diagonalizzabile. 
+		\item Dette $ \lambda_1, \ldots, \lambda_k $ con $ k \leq n $ le radici del polinomio caratteristico, i.e. autovalori di $ T $, studio gli autospazi relativi $ V_{\lambda_1} = \ker{(T - \lambda_1 \Id)}, \ldots, V_{\lambda_k} = \ker{(T - \lambda_k \Id)} $
+		\item Osservo che questi sottospazi sono in somma diretta e quindi 
+		\begin{itemize}
+			\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} = V $ allora $ T $ si diagonalizza e una base digonalizzante di $ V $ è data dall'unione delle basi dei $ V_{\lambda_j} $ e posso procedere;
+			\item se $ V_{\lambda_1} \oplus \ldots \oplus V_{\lambda_k} \subset V $ allora $ T $ non è diagonalizzabile.
+		\end{itemize} 
+		Se voglio solo sapere se $ T $ è diagonalizzabile è sufficiente confrontare la molteplicità algebrica $ a_i $ delle radici $ \lambda_i $ del polinomio caratteristico con la molteplicità geometrica $ m_i = \dim{V_{\lambda_i}} = \dim{\ker{(T - \lambda_i \Id)} }$. $ T $ è diagonalizzabile $ \iff $ per ogni $ i $ vale $ a_i = m_i $.
+		\item Usando la base trovata, si scrive la matrice diagonale corrispondente (i coefficienti sono zeri tranne sulla diagonale in cui ci sono tanti $ \lambda_i $ quanti la $ m_i = \dim{V_{\lambda_i}} $). 
+	\end{enumerate} 
+\end{framed}

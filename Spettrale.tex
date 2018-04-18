@@ -1,0 +1,173 @@
+% TEOREMA SPETTRALE, AGGIUNZIONE, OPERATORI ORTOGONALI E UNITARI
+
+Sia $ V $ uno spazio vettoriale sul campo $ \K = \R \text{ o } \C $ di dimensione finita dotato di prodotto rispettivamente scalare o hermitiano definito positivo $ \scprd{\;}{\,} $.
+
+\begin{thm}[endomorfismo aggiunto e matrice aggiunta]
+	Dato $ T \colon V \to V $ endomorfismo esiste un unico endomorfismo $ T^{*} \colon V \to V $ tale che \[\forall u, v \in V, \ \scprd{Tu}{v} = \scprd{u}{T^{*}v}.\] Tale $ T^{*} $ viene detto endomorfismo aggiunto di $ T $. \\
+	In termini di matrici, se $ \mathscr{B} $ è una base ortonormale di $ V $ e $ [T]_{\mathscr{B}}^{\mathscr{B}} $ è la matrice di $ T $ rispetto a tale base, allora la matrice di $ T^{*} $ rispetto alla stessa base è $ [T^{*}]_{\mathscr{B}}^{\mathscr{B}} = \overline{([T]_{\mathscr{B}}^{\mathscr{B}})^{t}} $ (trasposta coniugata). Se $ A $ è una matrice quadrata a coefficienti in $ \R $ o $ \C $, si definisce matrice aggiunta di $ A $ la matrice $ \overline{A^t} $.
+\end{thm}
+
+\begin{prop}[matrice dell'aggiunto]
+	Sia $ T \in \End{(V)} $, $ \mathscr{B} $ una base di $ V $ e $ M $ la matrice del prodotto scalare scritta in tale base. Allora 
+	\begin{itemize}
+		\item $ \K = \R $: $ [T^{*}]_{\mathscr{B}}^{\mathscr{B}} = M^{-1} \, ([T]_{\mathscr{B}}^{\mathscr{B}})^{t} \, M $.
+		\item $ \K = \C $: $ [T^{*}]_{\mathscr{B}}^{\mathscr{B}} = \overline{M^{-1}} \, \overline{([T]_{\mathscr{B}}^{\mathscr{B}})^{t}} \, \overline{M} $.
+	\end{itemize}
+\end{prop}
+
+\begin{prop}[proprietà dell'aggiunzione]
+	Dati $ T, S \in \End{(V)} $ vale
+	\begin{enumerate}[label = (\roman*)]
+		\item $ (T + S)^{*} = T^{*} + S^{*} $
+		\item $ (T \, S)^{*} = S^{*} \, T^{*} $
+		\item $ \forall \alpha \in \K, \ (\alpha \, T)^{*} = \overline{\alpha} \, T^{*} $
+		\item $ (T^{*})^{*} = T $
+		\item \textbf{*} $ \ker{T^{*}} = (\im{T})^{\perp} $ e $ \ker{T} = (\im{T^{*}})^{\perp} $;
+		\item \textbf{*} $ \im{T^{*}} = (\ker{T})^{\perp} $ e $ \im{T} = (\ker{T^{*}})^{\perp} $.
+	\end{enumerate}
+\end{prop}
+
+\begin{definition}[endomorfismo normale]
+	$ T \in \End{(V)} $ si dice normale se commuta con il suo aggiunto, ovvero se $ T \; T^{*} = T^{*} \; T $.
+\end{definition}
+
+\begin{definition}[endomorfismo autoaggiunto]
+	$ T \in \End{(V)} $ si dice autoaggiunto se $ T = T^{*} $. In termini di matrici se $ [T]_{\mathscr{B}}^{\mathscr{B}} $ è la matrice di $ T $ rispetto a una base ortonormale $ \mathscr{B} $ di $ V $ si ha
+	\begin{itemize}
+		\item $ \K = \R $: $ T $ è autoaggiunta $ \iff $ $ [T]_{\mathscr{B}}^{\mathscr{B}} $ è simmetrica (uguale alla trasposta).
+		\item $ \K = \C $: $ T $ è autoaggiunta $ \iff $ $ [T]_{\mathscr{B}}^{\mathscr{B}} $ è hermitiana (uguale alla trasposta coniugata).
+	\end{itemize}
+\end{definition}
+
+\begin{thm}
+	Sia $ T \in \End{(V)} $ autoaggiunto. Se $ \lambda $ autovalore per $ T $, allora $ \lambda \in \R $. 
+\end{thm}
+
+\begin{thm}
+	$ \K = \R $ e $ T \in \End{(V)} $ autoaggiunto. Allora
+	\begin{enumerate}[label = (\roman*)]
+		\item il polinomio caratteristico $ p_T(t) $ si fattorizza completamente e ha tutte le radici reali;
+		\item $ T $ ha almeno un autovalore;
+		\item se $ \{v_1, \ldots, v_r\} $ è un insieme di autovalori a due a due distinti allora $ v_1, \ldots, v_r $ sono a due a due ortogonali.
+	\end{enumerate}
+\end{thm}
+
+\begin{prop}
+	Sia $ T \in \End{(V)} $ e $ W $ sottospazio di $ V $ $ T $-invariante, i.e. $ T(W) \subseteq W $. Allora l'ortogonale $ W^{\perp} $ è $ T^{*} $-invariante.
+\end{prop}
+
+\begin{prop}
+	Sia $ T \in \End{(V)} $ autoaggiunto e $ W $ sottospazio di $ V $ $ T $-invariante, i.e. $ T(W) \subseteq W $. Allora $ T\lvert_{W} $ è ancora autoaggiunto.
+\end{prop}
+
+\begin{thm}[Spettrale $ \K = \R $]
+	Sia $ T \colon V \to V $ endomorfismo autoaggiunto se e solo se esiste una base ortonormale di $ V $ di autovettori per $ T $. \\
+	In altri termini, ogni matrice simmetrica reale è simile a una matrice diagonale tramite una matrice ortogonale. In formule se $ S \in \mathrm{Mat}_{n \times n}(\R) $ è una matrice simmetrica reale esistono una matrice ortogonale $ O $ (i.e. $ O^{t} O = \Id $) rispetto al prodotto scalare standard di $ \R^{n} $ e una matrice diagonale $ D $ tali che \[D = O^{-1} S O = O^{t} S O.\]
+\end{thm}
+
+\begin{thm}[Spettrale $ \K = \C $] \textbf{*}
+	Sia $ T \colon V \to V $ endomorfismo normale se e solo se esiste una base ortonormale di $ V $ di autovettori per $ T $.\\
+	In altri termini, ogni matrice normale è simile a una matrice diagonale tramite una matrice unitaria. In formule se $ N \in \mathrm{Mat}_{n \times n}(\C) $ è una matrice normale esiste esistono una matrice unitaria $ U $ (i.e. $ \overline{U^t} U = \Id $) rispetto al prodotto hermitiano standard di $ \C^{n} $ e una matrice diagonale $ D $ tali che \[D = U^{-1} N U = \overline{U^t} N U.\]
+\end{thm}
+
+\begin{thm}[Spettrale $ \K = \C $ per endomorfismi autoaggiunti]
+	Sia $ T \colon V \to V $ endomorfismo normale allora se esiste una base ortonormale di $ V $ di autovettori per $ T $ (una sola implicazione).\\
+	In altri termini, ogni matrice hermitiana è simile a una matrice diagonale tramite una matrice unitaria. In formule se $ H \in \mathrm{Mat}_{n \times n}(\C) $ è una matrice hermitiana esiste esistono una matrice unitaria $ U $ (i.e. $ \overline{U^t} U = \Id $) rispetto al prodotto hermitiano standard di $ \C^{n} $ e una matrice diagonale $ D $ tali che \[D = U^{-1} H U = \overline{U^t} H U.\]
+\end{thm}
+
+\begin{prop}
+	Sia $ T \in \End{(V)} $ (autoaggiunto se $ \K = \R $). Allora \[T = O_{\End{V}} \iff \forall v \in V, \ \scprd{Tv}{v} = 0\]
+\end{prop}
+
+\begin{thm}
+	Sia $ V $ uno spazio vettoriale su $ \R $ con prodotto scalare definito positivo. Sia $ T \in \End{(V)} $ tale che $ T T^{*} = T^{*} T $. Allora $ V = \ker{T} \oplus \im{T} $. 
+\end{thm}
+
+\begin{definition}[endomorfismo ortogonale e matrice ortogonale]
+	$ \K = \R $. Un endomorfismo $ U \colon V \to V $ tale che $ U^{*} = U^{-1} $ si dice endomorfismo ortogonale. In termini di matrici se $ \mathscr{B} $ è un base ortonormale, $ [U]_{\mathscr{B}}^{\mathscr{B}} $ è ortogonale $ \iff $ $ [U^{-1}]_{\mathscr{B}}^{\mathscr{B}} = ([U]_{\mathscr{B}}^{\mathscr{B}})^t $.\\
+	Equivalentemente $ M \in \mathrm{Mat}_{n \times n}(\R) $ si dice ortogonale se $ M^{t} = M^{-1} $.
+\end{definition}
+
+\begin{prop}
+	Le seguenti affermazioni sono equivalenti.
+	\begin{enumerate}[label = (\roman*)]
+		\item $ A \in \mathrm{Mat}_{n \times n}(\R) $ è ortogonale.
+		\item Le righe di $ A $ sono vettori ortonormali rispetto al prodotto scalare standard.
+		\item Le colonne di $ A $ sono vettori ortonormali rispetto al prodotto scalare standard.
+	\end{enumerate}
+\end{prop}
+
+\begin{definition}[endomorfismo unitario e matrice unitaria]
+	$ \K = \C $. Un endomorfismo \linebreak $ U \colon V \to V $ tale che $ U^{*} = U^{-1} $ si dice endomorfismo unitario. In termini di matrici se $ \mathscr{B} $ è un base ortonormale, $ [U]_{\mathscr{B}}^{\mathscr{B}} $ è unitaria $ \iff $ $ [U^{-1}]_{\mathscr{B}}^{\mathscr{B}} = \overline{([U]_{\mathscr{B}}^{\mathscr{B}})^{t}} $\\
+	Equivalentemente $ M \in \mathrm{Mat}_{n \times n}(\C) $ si dice unitaria se $ \overline{M^{t}} = M^{-1} $.
+\end{definition}
+
+\begin{prop}
+	Le seguenti affermazioni sono equivalenti.
+	\begin{enumerate}[label = (\roman*)]
+		\item $ A \in \mathrm{Mat}_{n \times n}(\C) $ è unitaria.
+		\item Le righe di $ A $ sono vettori ortonormali rispetto al prodotto hermitiano standard.
+		\item Le colonne di $ A $ sono vettori ortonormali rispetto al prodotto hermitiano standard.
+	\end{enumerate}
+\end{prop}
+
+\begin{thm}
+	Sia $ U \in \End{(V)} $ tale che $ U^{*} = U^{-1} $ (i.e. ortogonale o unitario). Se $ \lambda $ è autovalore per $ U $ allora 
+	\begin{enumerate}[label = (\roman*)]
+		\item $ \abs{\lambda} = 1 $ (in particolare se $ \lambda \in \R $ allora $ \lambda  = \pm 1 $);
+		\item Se $ U v = \lambda v $ allora $ U^{*} v = \overline{\lambda} v $ (in particolare $ \overline{\lambda} $ è autovalore di $ U^{*} = U^{-1} $ rispetto allo stesso autovettore). 
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Dato $ U \in \End{(V)} $ sono equivalenti
+	\begin{enumerate}[label = (\roman*)]
+		\item $ U^{*} = U^{-1} $;
+		\item $ \forall v, w \in V, \ \scprd{Uv}{Uw} = \scprd{v}{w} $ ($ U $ è un'isometria)
+		\item $ \forall v \in V, \ \norm{Uv} = \norm{v} $.
+	\end{enumerate}
+\end{thm}
+
+\begin{prop}
+	Sia $ U \in \End{(V)} $ ortogonale o unitaria e sia $ W $ un sottospazio di $ V $ $ U $-invariante. Allora $ W^{\perp} $ è $ U $-invariante.
+\end{prop}
+
+\begin{thm}[Spettrale per gli endomorfismi unitari]
+	$ \K = \C $. Sia $ U \in \End{(V)} $ unitario. Allora esiste una base ortonormale di $ V $ di autovettori per $ U $.
+\end{thm}
+
+\begin{thm}[forma canonica degli endomorfismi ortogonali]
+	$ \K = \R $. Sia $ Q \colon V \to V $ un endomorfismo ortogonale. Allora esiste una base ortonormale $ \mathscr{B} $ di $ V $ in cui la matrice di $ Q $ ha la forma
+	\[[Q]_{\mathscr{B}}^{\mathscr{B}} = 
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	\fbox{$ \Id_{p} $} &  &  &  &  \\ 
+	& \fbox{$ - \Id_{q} $} &  &  &  \\ 
+	&  &\fbox{$ R_{\theta_1} $} &  &  \\ 
+	&  &  & \ \ddots \ &  \\ 
+	&  &  &  & \fbox{$ R_{\theta_k} $}
+	\end{pmatrix} \]
+	dove $ p, q, k \in \N $ con $ p + q + 2 k = n = \dim{V} $, $ \Id_r $ è la matrice identità di dimensioni $ r \times r $ e $ R_{\theta_i} $ è una matrice rotazione non banale $ 2 \times 2 $ 
+	\[R_{\theta_i} = 
+	\begin{pmatrix}
+	\cos{\theta_i} & - \sin{\theta_i} \\
+	\sin{\theta_i} & \cos{\theta_i}
+	\end{pmatrix}
+	\quad
+	\text{ con $ \theta_{i} \neq 0, \pi $ ($ + 2 k \pi, \ \forall k \in \Z $)}\] 
+\end{thm}
+
+\begin{prop}
+	\textsf{$ O $ matrice ortogonale $ \Rightarrow \det O = \pm 1 $.\\
+		$ U $ matrice unitaria $ \Rightarrow \abs{\det O} = 1 $.}
+\end{prop}
+
+\begin{definition}
+	\textsf{$ O(V) $ è il gruppo degli endomorfismi ortogonali con l'operazione di composizione. $ O(\R^n) = O(n) $.\\
+		Il sottogruppo delle di $ O(V) $ con $ \det = +1 $ è il gruppo ortogonale speciale $ SO(V) $. }
+\end{definition}
+
+\begin{definition}
+	\textsf{$ U(V) $ è il gruppo degli endomorfismi unitari con l'operazione di composizione. $ U(\C^n) = O(n) $.\\
+		Il sottogruppo delle di $ U(V) $ con $ \det = +1 $ è il gruppo unitario speciale $ SU(V) $. }
+\end{definition}

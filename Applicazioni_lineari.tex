@@ -1,0 +1,89 @@
+% APPLICAZIONI LINEARI
+
+\begin{definition}[spazio delle funzioni]
+	Sia $ A $ e $ V $ un $ \K $-spazio vettoriale. L'insieme $ V^A = \mathscr{F}{(A, V)} = \{f \colon A \to V\} $ con le operazioni di
+	\begin{itemize}
+		\item \emph{somma} $ \forall f, g \in \mathscr{F}(A, V) $: $ \forall x \in A, (f + g)(x) = f(x) + g(x) $;
+		\item \emph{prodotto per scalare} $ \forall f \in \mathscr{F}(A, V), \forall \alpha \in \K $: $ \forall x \in A, (\alpha \cdot f)(x) = \alpha \cdot f(x) $
+	\end{itemize} 
+	è lo spazio vettoriale delle funzioni da $ A $ in $ V $. 
+\end{definition}
+
+\begin{definition}[applicazione lineare]
+	Siano $ V $ e $ W $ due $ \K $-spazi vettoriali. Diremo che una funzione $ L \colon V \to W  $ è un'applicazione lineare (o mappa lineare o omomorfismo) se $ L $ soddisfa le seguenti proprietà
+	\begin{enumerate}[label = (\roman*)]
+		\item $ \forall v_1, v_2 \in V $ vale $ L(v_1 + v_2) = L(v_1) + L(v_2) $
+		\item $ \forall v \in V, \forall \lambda \in \K $ vale $ L(\lambda v) = \lambda L(v)$
+	\end{enumerate}
+	Diretta conseguenza è la seguente proprietà chiave delle applicazioni lineari
+	\begin{enumerate}[resume, label = (\roman*)]
+		\item $ L(O_V) = O_W $.
+	\end{enumerate}
+	L'insieme delle applicazioni lineari $ \mathscr{L}{(V, W)} = \{L \colon V \to W : L \text{ è lineare}\} $ è un sottospazio vettoriale di $ \mathscr{F}{(V, W)} $
+\end{definition}
+
+\begin{definition}[nucleo]
+	Siano $ V $ e $ W $ due spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W  $ un'applicazione lineare. Definiamo nucleo o kernel di $ L $, e scriveremo $ \ker{L}$, l'insieme degli elementi di $ V $ la cui immagine attraverso $ L $ è lo zero di $ W $. Formalmente \[\ker{L} = \{v \in V \colon L(v) = O_W\} \]
+\end{definition}
+
+\begin{thm}
+	Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \ker{L} $ è un sottospazio vettoriale di $ V $.
+\end{thm}
+
+\begin{thm}
+	Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \im{L} $ è un sottospazio vettoriale di $ W $.
+\end{thm}
+
+\begin{thm}
+	$ L \in \mathscr{L}{(V, W)} $ è iniettiva se e solo se $ \ker{L} = \{O_V\} $.
+\end{thm}
+
+\begin{thm}[composizione di applicazioni lineari]
+	\textsf{la composizione di due applicazioni lineari è ancora un'applicazione lineare}
+\end{thm}
+
+\begin{thm}[inversa di un'applicazione lineare]
+	\textsf{l'inversa di una applicazioni lineare (se esiste) è ancora un'applicazione lineare}
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon \K^n \to \K^n $ un'applicazione lineare tale che $ \ker{L} = \{O_V\} $. Se $ v_1, \ldots, v_n \in V $ sono vettori linearmente indipendenti, anche $ L(v_1), \ldots, L(v_n) $ sono vettori linearmente indipendenti di $ W $.
+\end{thm}
+
+\begin{thm}[delle dimensioni]
+	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W $  un'applicazione lineare. Allora vale \[\dim{V} = \dim{\im{L}} + \dim{\ker{L}}\]
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon \K^n \to \K^n $ un'applicazione lineare. Se $ \ker{L} = \{O_V\} $ e $ \im{L} = W $, allora $ L $ è biettiva e dunque invertibile
+\end{thm}
+
+\begin{definition}[isomorfismo]
+	$ L \in \mathscr{L}{(V, W)} $ biettiva si dice isomorfismo. Se tale applicazioni esiste si dice che $ V $ e $ W $ sono isomorfi.
+\end{definition}
+
+\begin{definition}[endomorfismo]
+	$ L \in \mathscr{L}{(V, V)} $ dallo spazio in sé si dice endomorfismo. L'insieme degli endomorfismi viene indicato con $ \End{(V)} $ ed è un sottospazio vettoriale di $ \mathscr{F}{(V, V)} $
+\end{definition}
+
+%\clearpage
+
+\begin{thm}[decomposizione di Fitting] \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ e $ f \in \End{(V)} $. Allora esiste un intero $ k \leq n $ tale che \begin{enumerate}[label = (\roman*)]
+		\item $ \ker{f^{k}} = \ker{f^{k + 1}} $;
+		\item $ \im{f^{k}} = \im{f^{k + 1}} $;
+		\item $ f\lvert_{\im{f^{k}}} \colon \im{f^{k}} \to \im{f^{k}} $ è un isomorfismo;
+		\item $ f(\ker{f^{k}}) \subseteq \ker{f^{k}} $;
+		\item $ f\lvert_{\ker{f^{k}}} \colon \ker{f^{k}} \to \ker{f^{k}} $ è nilpotente;
+		\item $ V = \ker{f^{k}} \oplus \im{f^{k}} $.
+	\end{enumerate}
+\end{thm}
+
+\begin{prop} \footnote{Primo compitino 2017/2018}
+	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ e $ f \in \End{(V)} $. Allora:
+	\begin{enumerate}
+		\item $ \forall j \in \N, \ \ker{f^{j}} \subseteq \ker{f^{j + 1}} $;
+		\item se esiste $ j \in \N : \ker{f^{j}} = \ker{f^{j + 1}} $ allora $ \forall m \geq j, \ \ker{f^{m}} = \ker{f^{m + 1}} $;
+		\item se esiste $ j \in \N : f^{j} = 0 $ (endomorfismo nullo), allora $ f^{n} = 0 $. 
+	\end{enumerate}
+\end{prop}

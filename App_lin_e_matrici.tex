@@ -1,0 +1,51 @@
+% APPLICAZIONI LINEARI E MATRICI
+
+\begin{thm}
+	Sia $ L \colon \K^n \to \K $ un'applicazione lineare. Allora esiste un unico vettore $ A \in \K^n $ tale che $ \forall X \in \K^n $ \[L(X) = A \cdot X\]
+\end{thm}
+
+\begin{thm}
+	Esiste una corrispondenza biunivoca tra \[\{L \colon \K^n \to \K^m \quad \mathrm{lineare}\} \leftrightarrow \mathrm{Mat}_{m \times n}(\K)\]
+	\begin{enumerate}
+		\item Data una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ è possibile associare ad essa un'applicazione lineare
+		\begin{align*}
+		L \colon \K^n & \to \K^m \\
+		X & \mapsto MX
+		\end{align*}
+		\item Sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Allora esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che $ \forall X \in \K^n $, $ L(X) = MX $. Se $ \mathscr{C} = \{e_1, \ldots , e_n\} $ la è base canonica di $ \K^n $, le colonne di $ M $ sono $ L(e_1), \ldots, L(e_n) $.
+	\end{enumerate}
+\end{thm}
+
+\begin{thm}
+	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon \K^n \to \K^m $ un'applicazione lineare. Siano inoltre $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. Preso $ v \in V $ esiste una matrice $ M \in \mathrm{Mat}_{m \times n}(\K) $ tale che \[X_{\mathscr{B} '} (L(v)) = M X_{\mathscr{B}} (v) \] dove $ X(w) $ è il vettore colonna di $ w $ scritto nella rispettiva base. 
+\end{thm}
+
+\begin{thm}
+	Siano $ V $ e $ W $ due spazi vettoriali su $ \K $ di dimensione $ n $ e $ m $. Siano $ \mathscr{B} = \{v_1, \ldots, v_n\} $ e $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ basi rispettivamente di $ V $ e di $ W $. \\ Indicando con $ \mathscr{L}(V, W) = \{L \colon \K^n \to \K^m \quad \mathrm{lineare}\} $ e con $ \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}} $ la matrice associata a $ L $ rispetto alle basi $ \mathscr{B} $ e $ \mathscr{B}' $, si ha che 
+	\begin{align*}
+	M \colon \mathscr{L}(V, W) & \to \mathrm{Mat}_{m \times n}(\K)\\
+	L & \mapsto \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}}
+	\end{align*}
+	è un'applicazione lineare ed è un isomorfismo tra lo spazio delle applicazioni lineari e lo spazio delle matrici. 
+\end{thm}
+
+\begin{thm}[matrice di funizione composta]
+	Siano $ V $, $ W $ e $ U $ spazi vettoriali e siano \linebreak $ \mathscr{B} = \{v_1, \ldots, v_n\} $, $ \mathscr{B}' = \{w_1, \ldots, w_m\} $ e $ \mathscr{B}'' = \{u_1, \ldots, u_s\} $ basi di $ V $, $ W $ e $ U $ rispettivamente. Siano inoltre $ F \colon V \to W $ e $ G \colon W \to U $ lineari. Allora \[ \left [G \circ F \right ]_{\mathscr{B}''} ^{\mathscr{B}} = \left [G \right ]_{\mathscr{B}''} ^{\mathscr{B}'} \left [F \right ]_{\mathscr{B}'} ^{\mathscr{B}} \]
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ B \colon V \to V $ lineare e invertibile. Allora vale che \[\im{L \circ B} = \im{L} \quad \mathrm{e} \quad \dim{\ker{L \circ B}} = \dim{\ker{L}}\] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [B \right ] $ è la matrice invertibile delle mosse di colonna associata a $ B $, la matrice $ \left [L \right ] \left [B \right ] $ è una matrice ridotta a scalini per colonna in cui lo $ Span $ delle colonne è lo stesso dello span delle colonne di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per colonne lascia invariato lo $ Span $ delle colonne. 
+\end{thm}
+
+\begin{thm}
+	Sia $ L \colon V \to W $ un'applicazione lineare e $ U \colon W \to W $ lineare e invertibile. Allora vale che \[\ker{U \circ L} = \ker{L} \quad \mathrm{e} \quad \dim{\im{U \circ L}} = \dim{\im{L}}\] In altre parole se $ \left [L \right ] $ è la matrice associata a $ L $ e $ \left [U \right ] $ è la matrice invertibile delle mosse di riga associata a $ U $, la matrice $ \left [U \right ] \left [L \right ] $ è una matrice ridotta a scalini per riga che ha lo stesso $ \ker $ di $ \left [L \right ] $. Più brevemente la riduzione di Gauss per righe lascia invariato lo spazio delle soluzioni di un sistema lineare omogeneo.
+\end{thm}
+
+\begin{definition}[rango]
+	Sia $ A \in \mathrm{Mat}_{m \times n} (\K) $ definiamo rango di A, $ \rg{A} $, in modo equivalente come
+	\begin{enumerate}
+		\item il numero massimo di colonne linearmente indipendenti (numero di \emph{pivot} colonna di $ A $ ridotta a scalini per colonna)
+		\item il numero massimo di righe linearmente indipendenti (numero di \emph{pivot} riga di $ A $ ridotta a scalini per righe)
+		\item la $ \dim{\im{L}} $, dove $ L \colon \K^n \to \K^m $ è l'applicazione lineare associata $ \left [L \right ]_{\mathscr{B}'} ^{\mathscr{B}} = A $
+	\end{enumerate}
+\end{definition}

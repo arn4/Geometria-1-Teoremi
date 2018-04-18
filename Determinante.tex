@@ -1,0 +1,186 @@
+% 	DETERMINIANTE
+
+\begin{definition}[gruppo simmetrico]
+	Il gruppo simmetrico di un insieme è il gruppo formato dall'insieme delle permutazioni dei suoi elementi, cioè dall'insieme delle funzioni biiettive di tale insieme in se stesso, munito dell'operazione binaria di composizione di funzioni. \\
+	In particolare detto $ S_n = \{1, \ldots, n\} $ l'insieme delle permutazioni \[\Sigma_n = \Sigma (S_n) = \{\sigma \colon S_n \to S_n : \sigma \text{ è biettiva}\}\] è un gruppo simmetrico. Ricordiamo che una permutazione $ \sigma \in \Sigma_n $ viene spesso indicata con la seguente notazione 
+	\[\begin{pmatrix}
+	1 & 2 & \cdots & n \\
+	\sigma (1) & \sigma (2) & \cdots & \sigma (n) \\
+	\end{pmatrix}\]
+	dove si intende che l'elemento $ i $ viene mandato in $ \sigma (i) $ dalla permutazione. 
+\end{definition}
+
+\begin{definition}[trasposizione]
+	Una trasposizione è una permutazione $ \tau \in \Sigma_n $ tale che scambia due soli elementi di $ S_n $ mentre lascia invariati i restaniti $ n - 2 $. Se $ \tau $ scambia $ i, j \in S_n $ scriveremo $ \begin{pmatrix}
+	i & j \\
+	\end{pmatrix} $. 
+\end{definition}
+
+\begin{prop}
+	\begin{enumerate}[label = (\roman*)]
+		\item Ogni permutazione $ \sigma \in \Sigma_n $ è esprimile, non in modo unico, come prodotto (composizione) di trasposizioni. 
+		\item Se $ \sigma = \tau_1 \circ \cdots \circ \tau_h = \lambda_1 \circ \cdots \circ \lambda_h $ con $ \tau_i $ e $ \lambda_j $ trasposizioni allora $ h $ e $ k $ hanno la stessa parità. Se $ \sigma $ è prodotto di un numero pari (dispari) di trasposizioni diremo che $ \sigma $ è pari (dispari). 
+	\end{enumerate}
+\end{prop}
+
+\begin{definition}
+	Data $ \sigma \in \Sigma_n $ definiamo la funzione segno $ \sgn \colon \Sigma_n \to \{-1, 1\} $ come 
+	\[\sgn(\sigma) = 
+	\begin{cases*}
+	1 & se $ \sigma $ è pari \\
+	-1 & se $ \sigma $ è dispari \\
+	\end{cases*}\]
+	Vale in particolare che $ \sgn(\sigma_1 \circ \sigma_2) = \sgn(\sigma_1) \cdot \sgn(\sigma_2) $
+\end{definition}
+
+\begin{prop}
+	Sia $ \sigma \in \Sigma_n $ una permutazione e sia $ \sigma^{-1} $ la permutazione inversa. Allora $ \sgn(\sigma) = \sgn(\sigma^{-1}) $. 
+\end{prop}
+
+\begin{thm}[Unicità del determinante]
+	Sia $ \mathrm{Mat}_{n \times n} (\K) $  lo spazio vettoriale delle matrici quadrate  a valori nel campo $ \K $. Esiste una ed una sola funzione da $ \mathrm{Mat}_{n \times n} (\K) $ in $ \K $ funzione delle righe (o delle colonne) di una matrice $ A $ che rispetta i seguenti tre assiomi:  
+	\begin{enumerate}[label = (\roman*)]
+		\item \emph{multilineare} (lineare in ogni riga o colonna);
+		\item \emph{alternante} (cambia di segno se si scambiano due righe o due colonne);
+		\item \emph{normalizzata} (l'immagine dell'identità è 1);
+	\end{enumerate}
+	Tale funzione viene detta determinante ed indicata con $ \det \colon \mathrm{Mat}_{n \times n} (\K) \to \K $. 
+\end{thm}
+
+\begin{propriety}[del determinante] \label{prop:det}
+	Le seguenti proprietà sono conseguenza degli assiomi (i), (ii) e (iii). Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ allora
+	\begin{enumerate}[label = (\arabic*)]
+		\item Se $ A $ ha due righe uguali allora $ \det{A} = 0 $.
+		\item Se $ A $ ha una riga nulla allora $ \det{A} = 0 $.
+		\item Se alla riga $ A_i $ di $ A $ si somma un multiplo della riga $ A_j $ ($ i \neq j $) si ottiene una matrice $ B $ tale che $ \det A = \det B $. 
+		\item Il determinante è invariante sotto l'algoritmo di Gauss (escludendo le mosse di \emph{normalizzazione} delle righe o delle colonne) a meno di un segno che dipende dal numero di scambi di righe o di colonne fatto. In altre parole se $ S $ è una forma a scalini di $ A $ allora $ \det A = \pm \det S $.
+		\item Se $ A $ è una matrice diagonale allora il suo determinante è il prodotto degli elementi sulla diagonale: $ \det A = a_{11} \cdots a_{nn} $. 
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}[esistenza del determinante]
+	Sia $ A = (a_{ij})_{\substack{i = 1, \ldots, n \\ j = 1, \ldots, n}} \in \mathrm{Mat}_{n \times n} (\K) $. La funzione \[\det(A) = \sum_{\sigma \in \Sigma_n} \sgn(\sigma) \cdot a_{1 \sigma(1)} a_{2 \sigma(2)} \cdots a_{n \sigma{n}}\] è il determinante (in quanto è una funzione multilineare, alternante e normalizzata dallo spazio delle matrici nel campo). 
+\end{thm}
+
+\begin{corollary}
+	Il determinante di $ A $ è uguale al determinante della sua trasposta: $ \det A = \det A^{t} $. 
+\end{corollary}
+
+\begin{definition}[complemento algebrico]
+	Il complemento algebrico o cofattore dell'elemento $ a_{ij} $ di una matrice $ A \in \mathrm{Mat}_{n \times n} (\K) $ è il determinante della matrice $ (n - 1) \times (n - 1) $ ottenuta cancellando da $ A $ la $ i $-esima riga e la $ j $-esima colonna moltiplicato per $ (-1)^{i + j} $: in formule
+	\[\cof_{ij}(A) = (-1)^{i + j} \cdot \det 
+	\begin{pmatrix}
+	a_{11} & \cdots & \cancel{a_{1j}} & \cdots & a_{1n} \\
+	\vdots &        & \vdots &        & \vdots \\
+	\cancel{a_{i1}} & \cdots & \cancel{a_{ij}} & \cdots & \cancel{a_{in}} \\
+	\vdots &  		& \vdots &  	  & \vdots \\
+	a_{n1} & \cdots & \cancel{a_{nj}} & \cdots & a_{nn} \\
+	\end{pmatrix}.\]
+	Con $ \cof{(A)} $ indichiamo la matrice dei cofattori ovvero la matrice che ha nella posizione $ i, j $ il complemento algebrico di $ a_{ij} $, $ \cof{(A)} = \left(\cof_{ij}{(A)}\right) $
+\end{definition}
+
+\begin{thm}[sviluppo di Laplace]
+	Data $ A \in \mathrm{Mat}_{n \times n} (\K) $ la seguente funzione
+	\begin{itemize}
+		\item fissata una riga $ i $ di $ A $: $ \det A = \sum_{j = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
+		\item fissata una colonna $ j $ di $ A $: $ \det A = \sum_{i = 1}^{n} a_{ij} \cdot \cof_{ij} (A) $
+	\end{itemize}
+	verifica gli assiomi (i), (ii) e (iii) e quindi è il determinante. \\
+	Dallo sviluppo di Laplace si deduce che la proprietà (5) di Proprietà \ref{prop:det} vale anche per le matrici triangolari (superiori o inferiori)
+\end{thm}
+
+\begin{thm}[invertibilità]
+	$ A $ è invertibile $ \iff $ $ \det{A} \neq 0 $ ($ \iff $ $ \rg A = n $).
+\end{thm}
+
+\begin{prop}[formula per l'inversa]
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e. $ \det A \neq 0 $. Allora il coefficiente $ ij $ della matrice inversa è \[\left(A^{-1}\right)_{ij} = \frac{1}{\det{A}} \cdot \cof_{ji}{(A)}\] dove $ \cof_{ji}{(A)} $ è il complemento algebrico dell'elemento $ a_{ji} $ di $ A $ (sì, gli indici sono scambiati).   
+\end{prop}
+
+\begin{thm}[regola di Cramer]
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ invertibile, i.e $ \det A \neq 0 $ (e $ \rg A = n $), e siano $ A^{1}, \ldots, A^{n} $ le sue colonne. Siano inoltre $ b = (b_j) $ un vettori colonna. Allora se $ x = (x_j) $ è l'unico vettore colonna che soddisfa il sistema lineare 
+	\[Ax = b \quad \iff \quad A \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix} \quad \iff \quad x_1 A^{1} + \ldots x_n A^{n} = b\]
+	ha componenti date da 
+	\[x_j = \frac{\det{\left(A^{1} \cdots A^{j - 1} \ b \ A^{j + 1} \ldots A^{n}\right)}}{\det{A}}\]
+	dove per $ A^{1} \cdots A^{j - 1} \ b \ A^{j + 1} \ldots A^{n} $ si intende la matrice $ A $ alla cui $ j $-esima colonna è stato sostituito il vettore colonna $ b $ dei termini noti.  
+\end{thm}
+
+\begin{corollary}
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $ e $ \cof{A} $ la matrice dei cofattori. Allora vale la seguente identità \[A \ (\cof{A})^{t} = \det{(A)} \cdot \Id\]
+\end{corollary}
+
+\begin{thm}[di Binet]
+	Date $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ vale $ \det{(AB)} = \det{(A)} \cdot \det{(B)} $. 
+\end{thm}
+
+\begin{corollary}[determinante dell'inversa]
+	Se $ A \in \mathrm{Mat}_{n \times n} (\K) $ è invertivile, i.e. $ \det{A} \neq 0 $, allora $ \det{A^{-1}} = \frac{1}{\det{A}} $. 
+\end{corollary}
+
+\begin{corollary}
+	Per ogni $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ vale $ \det{AB} = \det{BA} $.
+\end{corollary}
+
+\begin{corollary}[invarianza del determinatane per coniugio]
+	Siano $ A, B \in \mathrm{Mat}_{n \times n} (\K) $ con $ B $ matrice invertibile. Allora $ \det{(B^{-1} A B)} = \det{(A)} $. \\
+	In altri termini se $ [A] $ e $ [A'] $ sono matrici che descrivono lo stesso endomorfismo $ A \colon V \to V $ ma scritte in basi (in partenza ed in arrivo) diverse allora $ \det{[A]} = \det{[A']} $. Dunque è il determinante è ben definito come funzione dagli endomorfismi $ \mathscr{L}(V) $ nel campo $ \K $ . 
+\end{corollary}
+
+\begin{definition}[sottomatrice]
+	Sia $ M \in \mathrm{Mat}_{n \times m} (\K) $ una matrice qualsiasi. Per sottomatrice di $ M $ si intende una ottenuta da $ M $ cancellando alcune righe e/o alcune colonne di $ M $. In modo equivalente si intende una $ M' \in \mathrm{Mat}_{r \times s} (\K) $ ottenuta da $ M $ selezionando i coefficienti posti nell'intersezione tra $ 1 \leq r \leq n $ righe ed $ 1 \leq s \leq m $ colonne scelte nella matrice $ M $. Nel caso di sottomatrice quadrate si ha $ r = s = k $ e si dice che l'ordine di $ M' $ è $ k $. 
+\end{definition}
+
+\begin{prop}
+	Se $ v_1 = \begin{pmatrix} v_{11} \\ v_{n1} \end{pmatrix}, \ldots, v_k = \begin{pmatrix} v_{1k} \\ v_{nk} \end{pmatrix} $ con $ k \leq n $ sono vettori linearmente \emph{dipendenti} allora ogni sottomatrice quadrata di ordine $ k $ estratta dalla matrice $ M \in \mathrm{Mat}_{n \times k} (\K) $ che ha per colonne $ v_1, \ldots, v_k $ non invertibile e quindi con determinante nullo. 
+	\[M = \begin{pmatrix}[c|c|c]
+	v_{11} & & v_{1k} \\
+	\vdots & \cdots & \vdots \\
+	v_{n1} & & v_{nk}
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{prop}
+	Se $ v_1 = \begin{pmatrix} v_{11} \\ v_{1n} \end{pmatrix}, \ldots, v_k = \begin{pmatrix} v_{k1} \\ v_{kn} \end{pmatrix} $ con $ k \leq n $ sono vettori linearmente \emph{indipendenti} allora esiste una sottomatrice quadrata di ordine $ k $ estratta dalla matrice $ M \in \mathrm{Mat}_{n \times k} (\K) $ che ha per colonne $ v_1, \ldots, v_k $ invertibile e quindi con determinante non nullo. 
+	\[M = \begin{pmatrix}[c|c|c]
+	v_{11} & & v_{1k} \\
+	\vdots & \cdots & \vdots \\
+	v_{n1} & & v_{nk}
+	\end{pmatrix}\]
+\end{prop}
+
+\begin{thm}[caratterizzazione del rango con il determinante]
+	Sia $ A \in \mathrm{Mat}_{n \times n} (\K) $. Allora il rango di $ A $ è il massimo ordine di una sottomatrice quadrata invertibile, i.e con determinante non nullo. \\
+	In altri termini $ \rg A = k $ $ \iff $ tra tutte le sottomatrici di $ A $ esiste una sottomatrice $ k \times k $ con determinante $ \neq 0 $ tale che tutte le sottomatrici quadrate di ordine maggiore hanno determinante nullo. Per lo sviluppo di Laplace è sufficiente verificare che tutte le sottomatrici $ (k + 1) \times (k + 1) $ hanno determinante nullo. 
+\end{thm}
+
+\begin{propriety}[del determinante]
+	Valgono le seguenti identità aggiuntive. 
+	\begin{enumerate}
+		\item Se $ M = \begin{pmatrix}
+		A & B \\
+		C & D
+		\end{pmatrix} $	
+		è una matrice a blocchi con $ A $ matrice invertibile allora $ \det{M} = \det{(A)} \cdot \det{(D - CA^{-1}B)} $. Inoltre che $ AC = CA $ allora $ \det{M} = \det{AD - CB} $. 
+		\item Se $ M $ è una matrice diagonale a blocchi allora il determinante è il prodotto dei determinanti dei blocchi diagonali $ A_1, \ldots A_k $. 
+		\[\det{M} = \det
+		\setlength{\arraycolsep}{0pt}
+		\begin{pmatrix}
+		\fbox{$ A_1 $}		&		&		&		&		 \\
+		& \fbox{$ A_2 $}	&		&		&		 \\
+		& 		& \ \ddots \ &		&		 \\	 
+		& 		&		& \fbox{$ A_{k - 1} $}		&		 \\	
+		& 		& &		& \fbox{$ A_k $}		 \\	 		 		
+		\end{pmatrix}
+		= \det{(A_1)} \cdots \det{(A_k)}\]
+		\item Se $ M $ è una \emph{matrice di Vandermonde} allora vale che 
+		\[\det{(M)} = \det 
+		\begin{pmatrix}
+		1 & 1 & \cdots & 1 \\
+		a_1 & a_2 & \cdots & a_n \\
+		a_1^{2} & a_2^{2} & \cdots & a_n^{2} \\
+		\vdots & \vdots & & \vdots \\
+		a_1^{n} & a_2^{n} & \cdots & a_n^{n} \\
+		\end{pmatrix} 
+		= \prod_{\substack{i = 1 \\ j < i}}^{n} (a_i - a_j)\]
+	\end{enumerate}
+\end{propriety}

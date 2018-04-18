@@ -1,0 +1,250 @@
+% PRODOTTI SCALARI
+
+\begin{definition}[prodotto scalare]
+	Sia $ V $ un $ \K $-spazio vettoriale. Un prodotto scalare su $ V $ è una funzione \[\scprd{\;}{\,} \colon V \times V \to \K \] che soddisfa le seguenti prorpietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v,w \in V $ vale $ \scprd{v}{w} = \scprd{w}{v} $
+		\item $ \forall v, w, u \in V $ vale $ \scprd{v}{w + u} = \scprd{v}{w} + \scprd{v}{u} $
+		\item $ \forall v, w \in V, \forall \lambda \in \K $ vale $ \scprd{\lambda v}{w} = \scprd{v}{\lambda w} = \lambda \scprd{v}{w} $
+	\end{enumerate}	
+	Indicheremo con la coppia $ (V, \varphi) $ lo spazio vettoriale $ V $ dotato del prodotto scalare $ \varphi \colon V \times V \to \K $. 
+\end{definition}
+
+\begin{propriety} Alcuni prodotti scalari godono delle segenti proprietà
+	\begin{enumerate}
+		\item Un vettore $ v \in V $ tale che $ \scprd{v}{v} = 0 $ si dice \emph{isotropo}.
+		\item Un prodotto scalare tale che preso un $ v \in V $ \[\forall w \in V \quad \scprd{v}{w} = O_V \Rightarrow v = O_V\] si dice \emph{non degenere}.
+		\item Un prodotto scalare su $ V $ spazio vettoriale sul campo $ \R $ tale che \[ \forall v \in V \quad \scprd{v}{v} \geq 0 \quad \mathrm{e} \quad \scprd{v}{v} = 0 \iff v = O_V \] si dice \emph{definito positivo}.
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}
+	Un prodotto scalare è non degenere se e solo se la matrice $ E $ che lo rappresenta ha rango massimo. Ovvero, se $ \{e_1, \ldots, e_n \} $ è base di $ V $
+	\[ \rg{E} = \rg{ 
+		\begin{pmatrix}
+		\scprd{e_1}{e_1} & \cdots  & \scprd{e_1}{e_n} \\
+		\vdots           & \ddots & \vdots \\
+		\scprd{e_n}{e_1} & \cdots  & \scprd{e_n}{e_n} \\
+		\end{pmatrix}}
+	= n	\]
+\end{thm}
+
+\begin{definition}[norma, distanza, ortogonalità]
+	Sia $ \scprd{\,}{} $ un prodotto scalare su $ V $ spazio vettoriale su $ \R $. Allora
+	\begin{enumerate}
+		\item la norma di $ v \in V $ è $ \norm{v} = \sqrt{\scprd{v}{v}} $
+		\item la distanza tra $ v, w \in V $ è data da $ \norm{v - w} $
+		\item due vettori $ v, w \in V $ si dicono ortogonali se $ \scprd{v}{w} = 0 $
+	\end{enumerate}
+\end{definition}
+
+\begin{thm}[di Pitagora]
+	Sia $ V $ uno spazio vettoriale sul campo $ \R $ con prodotto scalare definito positivo. Dati $ v, w \in V \colon \scprd{v}{w} = 0 $	allora \[\norm{v + w}^2 = \norm{v}^2 + \norm{w}^2\]
+\end{thm}
+
+\begin{thm}[del parallelogramma]
+	Sia $ V $ uno spazio vettoriale sul campo $ \R $ con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[\norm{v + w}^2 + \norm{v - w}^2 = 2\norm{v}^2 + 2\norm{w}^2\]
+\end{thm}
+
+\begin{definition}[componente]
+	Dati $ v, w \in V $ chiamiamo coefficiente di Fourier o componente di $ v $ lungo $ w $ lo scalare \[c = \frac{\scprd{v}{w}}{\scprd{w}{w}}\] In particolare vale $ \scprd{v - cw}{w} = 0 $
+\end{definition}
+
+\begin{thm}[disuguaglianza di Schwarz]
+	Sia $ V $ uno spazio vettoriale sul campo $ \R $ con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[|\scprd{v}{w}| \leq \norm{v} \cdot \norm{w}\]
+\end{thm}
+
+\begin{thm}[disuguaglianza triangolare]
+	Sia $ V $ uno spazio vettoriale sul campo $ \R $ con prodotto scalare definito positivo. Allora $ \forall v, w \in V $ vale \[\norm{v + w} \leq \norm{v} + \norm{w}\]
+\end{thm}
+
+\begin{thm}
+	Siano $ v_1, \ldots , v_n \in V $ a due a due perpendicolari ($ \forall i \neq j \; \scprd{v_i}{v_j} = 0 $). Allora $ \forall v \in V $ il vettore \[v - \frac{\scprd{v}{v_1}}{\scprd{v_1}{v_1}}v_1 - \ldots - \frac{\scprd{v}{v_n}}{\scprd{v_n}{v_n}}v_n\] è ortogonale a ciascuno dei $ v_i $. Risulta inoltre che il vettore $ c_1 v_1 + \ldots + c_n v_n $ (dove $ c_i = \frac{\scprd{v}{v_i}}{\scprd{v_i}{v_i}} $) è la migliore approssimazione di $ v $ come combinazione lineare dei $ v_i $.
+\end{thm}
+
+\begin{thm}[disuguaglianza di Bessel]
+	Siano $ e_1, \ldots , e_n \in V $ a due a due perpendicolari e unitari. Dato un $ v \in V $, sia $ c_i = \frac{\scprd{v}{e_i}}{\scprd{e_i}{e_i}} $. Allora vale \[\sum_{i = 1}^{n}c_i^2 \leq \norm{v}^2\]
+\end{thm}
+
+\begin{thm}[ortogonalizzazione di Gram-Schmidt]
+	Sia $ V $ uno spazio vettoriale con prodotto scalare definito positivo. Siano $ v_1, \ldots , v_n \in V $ vettori linearmente indipendenti. Possiamo allora trovare dei vettori $ u_1,\ldots, u_r $, con $ r \leq n $ ortogonali tra loro e tali che $ \forall i \leq r, \, Span\{v_1, \ldots, v_i\} = Span \{u_1, \ldots, u_i\} $. In particolare basterà procedere in modo induttivo e prendere
+	\[\begin{cases}
+	u_1 = v_1 \\
+	u_{i} = v_i - \frac{\scprd{v_i}{u_1}}{\scprd{u_1}{u_1}}u_1 - \ldots - \frac{\scprd{v_i}{u_{i-1}}}{\scprd{u_{i-1}}{u_{i-1}}}u_{i-1}
+	\end{cases}\]
+\end{thm}
+
+\begin{corollary}[esistenza della base ortonormale per prodotto scalare definito positivo]
+	Dato $ V $ spazio vettoriale con prodotto scalare definito positivo esiste una base ortonormale di $ V $, ossia una base $ \{u_1,\ldots, u_r\} $ tale che $ \forall i \neq j \; \scprd{u_i}{u_j} = 0 $ e che $ \forall i \; \norm{u_i} = 1 $.
+\end{corollary}
+
+\begin{definition}[ortogonale e radicale]
+	Sia $ V $ uno spazio vettoriale dotato di prodotto scalare $ \varphi $ e $ W \subseteq V $. Definiamo ortogonale di $ W $ l'insieme $ W^{\perp} = \{v \in V : \forall w \in W, \varscprd{v}{w} = 0\} $.\\
+	Definiamo radicale di $ V $ l'insieme $ \operatorname{Rad}{(\varphi)} = \{v \in V : \forall w \in V, \scprd{v}{w} = 0\} $. Per definizione si ha che $ \operatorname{Rad}{(\varphi)} = V^{\perp} $
+\end{definition}
+
+\begin{propriety}[dell'ortogonale] \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale dotato di prodotto scalare $ \varphi $ e siano $ U, W $ due sottospazi vettoriali di $ V $. Allora:
+	\begin{enumerate}[label = (\roman*)]
+		\item $ W \subseteq (W^{\perp})^{\perp} $ e se $ \varphi $ è non degenere $ W = (W^{\perp})^{\perp} $;
+		\item $ W^{\perp} \cap U^{\perp} = (W + U)^{\perp} $;
+		\item $ (W \cap U)^{\perp} \supseteq W^{\perp} + U^{\perp} $ e se $ \varphi $ è non degenere $ (W \cap U)^{\perp} = W^{\perp} + U^{\perp} $.
+	\end{enumerate}
+\end{propriety}
+
+\begin{thm}
+	Sia $ V $ un $ \K $-spazio vettoriale dotato di prodotto scalare $ \varphi $. Sia $ W $ un sottospazio di $ V $ tale che la restrizione del prodotto scalare $ \varphi\lvert_{W} $ sia non degenere. Allora \[V = W \oplus W^{\perp}.\] In particolare l'enunciato vale se il prodotto scalare definito positivo. 
+\end{thm}
+
+\begin{definition}[prodotto hermitiano]
+	Sia $ V $ uno spazio vettoriale sul campo $ \C $. Un prodotto hermitiano su $ V $ è una funzione \[\scprd{\;}{\,} \colon V \times V \to \C \] che soddisfa le seguenti proprietà
+	\begin{enumerate}[label=(\roman*)]
+		\item $ \forall v,w \in V $ vale $ \scprd{v}{w} = \overline{\scprd{w}{v}} $ (coniugato)
+		\item $ \forall v, w, u \in V $ vale $ \scprd{v}{w + u} = \scprd{v}{w} + \scprd{v}{u} $ e $ \scprd{v + w}{u} = \scprd{v}{u} + \scprd{w}{u} $
+		\item $ \forall v, w \in V, \forall \lambda \in \C $ vale $ \scprd{\lambda v}{w} = \lambda \scprd{v}{w} $ e $ \scprd{v}{\lambda w} = \overline{\lambda} \scprd{v}{w} $
+	\end{enumerate}	
+\end{definition}
+
+\begin{definition}[prodotto hermitiano standard]
+	Dati due vettori colonna $ v, w \in \C^n $ definiamo il prodotto hermitiano standard come 
+	\[v \cdot w = 
+	\begin{pmatrix}
+	\alpha_1 \\
+	\vdots \\
+	\alpha_n \\ 
+	\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}
+	\beta_1 \\
+	\vdots \\
+	\beta_n \\ 
+	\end{pmatrix}
+	= \alpha_1 \overline{\beta_1} + \ldots + \alpha_n \overline{\beta_n}\]
+\end{definition}
+
+\begin{thm}[esistenza della base ortogonale per prodotto scalare generico] \label{thm:base_ortogonale}
+	Sia $ V $ un $ \K $-spazio vettoriale non banale di dimensione finita dotato di un prodotto scalare. Allora $ V $ ha una base ortogonale. 
+\end{thm}
+
+\begin{thm}[Algoritmo di Lagrange] \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale, $ \scprd{\;}{\,} $ un prodotto scalare se $ V $ e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ una base qualunque di $ V $. 
+	\begin{enumerate}
+		\item Se $ v_1 $ non è isotropo, cioè $ \scprd{v_1}{v_1} \neq 0 $, poniamo
+		\begin{align*}
+		v'_1 & = v_1 \\
+		v'_2 & = v_2 - \frac{\scprd{v_2}{v'_1}}{\scprd{v_1}{v_1}} v'_1 \\
+		\vdots & \qquad \qquad  \vdots \\
+		v'_n & = v_n - \frac{\scprd{v_n}{v'_1}}{\scprd{v_n}{v_1}} v'_1
+		\end{align*}
+		Così $ \scprd{v'_j}{v'_1} = 0 $ per ogni $ j \in {2, \ldots, n} $ e $ \mathscr{B}' $ è una base di $ V $.
+		\item Se $ v_1 $ è isotropo, cioè $ \scprd{v_1}{v_1} \neq 0 $ allora 
+		\begin{enumerate}
+			\item Se $ \exists j \in {2, \ldots, n} $ tale che $ \scprd{v_j}{v_j} \neq 0 $ permuto la base $ \mathscr{B} $ in modo che $ v_j $ sia il primo vettore e procedo come in 1.
+			\item Se $ \forall j \in {1, \ldots, n}, \ \scprd{v_j}{v_j} = 0 $ allora ci sono due casi
+			\begin{itemize}
+				\item $  \scprd{\;}{\,} $ è il prodotto scalare nullo e quindi ogni base è ortogonale
+				\item $ \exists i \neq j :  \scprd{v_i}{v_j} \neq 0 $ in tale caso $ \scprd{v_i + v_j}{v_i + v_j} = 2 \scprd{v_j}{v_j} \neq 0 $. Scelgo allora una base di $ V $ in cui $ v_i + v_j $ è il primo vettore e procedo come in 1.
+			\end{itemize}
+		\end{enumerate}
+	\end{enumerate}
+	Dopo aver ortogonalizzato i vettori rispetto al primo, itero il procedimento su $ \{v'_2, \ldots, v'_n\} $ e così via. Alla fine ottengo una base ortogonale rispetto a $ \scprd{\;}{\,} $. Dunque vale l'enunciato del Teorema \ref{thm:base_ortogonale}.
+\end{thm}
+
+\begin{prop}[base ortonormale]
+	Sia $ \{w_1, \ldots, w_n\} $ una base ortogonale di $ V $ con un prodotto scalare. Posto
+	\[v_i = 
+	\begin{cases*}
+	\frac{w_i}{\sqrt{\scprd{w_i}{w_i}}} & se $ \scprd{w_i}{w_i} > 0 $ \\
+	w_i & se $ \scprd{w_i}{w_i} = 0 $ \\
+	\frac{w_i}{\sqrt{-\scprd{w_i}{w_i}}} & se $ \scprd{w_i}{w_i} < 0 $ \\
+	\end{cases*}\]
+	l'insieme $ \{v_1, \ldots, v_n\} $ è una base ortonormale di $ V $. 
+\end{prop}
+
+\begin{thm}[corrispondenza matrice - prodotto scalare]
+	Sia $ V $ un $ \K $-spazio vettoriale e sia $ \mathscr{B} = \{v_1, \ldots, v_n\} $ base di $ V $. Dato un prodotto scale $ \varphi \colon V \times V \to \K $ la matrice del prodotto scalare è \[M_{\mathscr{B}}(\varphi) = (\varphi(v_i, v_j))_{\substack{i = 1, \ldots, n \\ j = 1, \ldots, n}}.\] Viceversa data $ M $ matrice simmetrica del prodotto scalare e $ u, w $ vettori di vettori colonna $ [u]_{\mathscr{B}} $ e $ [w]_{\mathscr{B}} $ si ha \[\varphi(v, w) = [u]_{B}^t \cdot M \cdot [w]_{\mathscr{B}}.\]
+\end{thm}
+
+\begin{prop}[radicale]
+	Sia $ V $ un $ \K $-spazio vettoriale e $ \varphi $ un prodotto scalare su $ V $. Vale che $ \operatorname{Rad}{(\varphi)} = \{v \in V : \forall w \in V, \varphi(v, w) = 0\} = \{v \in V : M_{\mathscr{B}}(\varphi) \cdot [v]_{\mathscr{B}} = 0\} $.\\
+	(Moralmente $ \operatorname{Rad}{(\varphi)} = \ker{M_{\mathscr{B}}(\varphi)} $). 
+\end{prop}
+
+\begin{definition}[spazio duale, funzionali]
+	Sia $ V $ un $ \K $-spazio vettoriale. Si definisce spazio duale di $ V $ l'insieme delle applicazioni lineari da $ V $ in $ \K $ \[V^{*} = \mathscr{L}(V, \K) = \mathscr{L}(V) = \{L \colon V \to \K : L \text{ è lineare}\}.\] I suoi elementi vengono detti funzionali lineari da $ V $ in $ \K $ e risulta $ \dim{V} = \dim{V^{*}} $. 
+\end{definition}
+
+\begin{definition}[base duale]
+	Sia $ V $ un $ \K $-spazio vettoriale. Fissata una base $ \{v_1, \ldots, v_n\} $ di $ V $ esiste una base $ \{\varphi_1, \ldots, \varphi_n\} $ di $ V^{*} $ ad essa associata detta base duale di $ v_1, \ldots, v_n $ definita come 
+	\[\varphi_i (v_j) = \delta_{ij} =  
+	\begin{cases*}
+	1 & se $ i = j $ \\
+	0 & se $ i \neq j $ \\
+	\end{cases*}\]
+\end{definition}
+
+\begin{thm}[di rappresentazione] \label{thm:isom_duale}
+	Sia $ V $ un $ \K $-spazio vettoriale di dimensione finita con un prodotto scalare non degenere. Allora l'applicazione
+	\begin{align*}
+	\Phi \colon V & \to V^{*} \\
+	v & \mapsto \varphi_v = \scprd{v}{\cdot \,}
+	\end{align*}
+	dove $ \varphi_v $ è la funzionale tale che $ \forall w \in V : \varphi_v(w) = \scprd{v}{w} $, è un isomorfismo tra $ V $ e il suo duale $ V^{*} $. In altri termini, dato $ \varphi \in V^{*} $ esiste un unico $ v \in V $ tale che $ \forall w \in V, \varphi{(w)} = \scprd{v}{w} $ . In tale caso si dice che $ \varphi $ è rappresentabile.
+\end{thm}
+
+\begin{thm}[annullatore]
+	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ e sia $ W $ sottospazio di $ V $. Sia inoltre $ \operatorname{Ann}{W} = \{\varphi \in V^{*} : \forall w \in W, \varphi(w) = 0\} $ l'annullatore di $ W $. Allora $ \operatorname{Ann}{W} $ è sottospazio di $ V^{*} $ e vale che $ \dim{(\operatorname{Ann}{W})} = n - \dim{W} $. 
+\end{thm}
+
+\begin{corollary}
+	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ con prodotto scalare non degenere, sia $ W $ sottospazio di $ V $ e $ W^{\perp} $ il suo ortogonale. Siano inoltre $ V^{*} $ il duale di $ V $ e $ \operatorname{Ann}{W} $ l'annullatore di $ W $. Allora $ \Phi(W^{\perp}) = \operatorname{Ann}{W} $ (in altre parole $ \Phi|_{W^{\perp}} \colon W^{\perp} \to \operatorname{Ann}{W} $ è un isomorfismo) e vale quindi \[\dim{W} + \dim{W^{\perp}} = \dim{V}.\]
+\end{corollary}
+
+\begin{thm} \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale dotato di un prodotto scalare $ \varphi $. Sia $ W $ sottospazio di $ V $, $ W^{\perp} $ il suo ortogonale e $ \operatorname{Rad}{(\varphi)} $ il radicale di $ \varphi $. Allora vale \[\dim{W} + \dim{W^{\perp}} = \dim{V} + \dim{(W \cap \operatorname{Rad}{(\varphi)})}\]
+\end{thm}
+
+\begin{thm}
+	Sia $ \Phi \colon V \to V^{*} $ l'isomorfismo del Teorema \ref{thm:isom_duale}. Allora $ \operatorname{Rad}{(\varphi)} = \ker{\Phi} $ e $ M_{\mathscr{B^{*}}}^{\mathscr{B}} (\Phi) = M_{\mathscr{B}}(\varphi_v) $ dove $ \mathscr{B}^{*} $ è la base del duale associata alla base $ \mathscr{B} $ di $ V $. 
+\end{thm}
+
+\begin{corollary}
+	Un prodotto scalare $ \varphi $ su $ V $ è non degenere $ \iff $ $ \operatorname{Rad}{(\varphi)} = \{O_V\} $ $ \iff $ $ \ker{M_{\mathscr{B}}(\varphi)} = O_V $ $ \iff $ $ M_{\mathscr{B}}(\varphi) $ ha rango $ n = \dim{V} $. 
+\end{corollary}
+
+\begin{corollary}
+	Se $ \mathscr{B} $ è una base ortonormale allora la matrice del prodotto scalare è diagonale. Detti $ \lambda_i = \varphi(v_i, v_i) $ si ha 
+	\[M_{\mathscr{B}}(\varphi) = 
+	\begin{pmatrix}
+	\lambda_1 & \cdots & 0 \\
+	\vdots & \ddots & \vdots \\
+	0 & \ldots & \lambda_n \\
+	\end{pmatrix}\]
+\end{corollary}
+
+\begin{prop}[indice di nullità]
+	Se $ \mathscr{B} = \{v_1, \ldots, v_n\} $ è una base ortonormale di $ V $ rispetto a $ \varphi $ prodotto scalare su $ V $, allora \[n_0 (\varphi) = \mathrm{card}\{i : \lambda_i = \varphi(v_i, v_i) = 0\} = \dim{\operatorname{Rad}{(\varphi)}}.\] Tale valore viene detto indice di nullità del prodotto scalare. 
+\end{prop}
+
+\begin{thm}[di Sylvester, indice di positività e di negatività] \label{thm:Sylvester}
+	Sia $ V $ uno spazio vettoriale su $ \R $, $ \varphi $ un prodotto scalare su $ V $ e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ una base di $ V $. Esiste un numero intero $ r = n_{+} (\varphi) $ che dipende solo da $ \varphi $ e non dalla base $ \mathscr{B} $, detto indice di positività, tale che ci sono esattamente $ r $ indici $ i $ tali che $ \varphi(v_i, v_i) = 1 $. Analogamente esiste un $ r' = n_{-} (\varphi) $ che dipende solo da $ \varphi $ e non dalla base $ \mathscr{B} $, detto indice di negatività, tale che ci sono esattamente $ r' $ indici $ i $ tali che $ \varphi(v_i, v_i) = - 1 $.
+\end{thm}
+
+\begin{definition}[segnatura e forma canonica dei prodotti scalari]
+	Si definisce segnatura di un prodotto scalare $ \varphi $ su $ V $ spazio vettoriale su $ \R $ la terna $ (n_0 (\varphi), n_{+} (\varphi), n_{-} (\varphi)) $. Detta $ n = \dim{V} $ vale \[n_0 (\varphi) + n_{+} (\varphi) + n_{-} (\varphi) = n.\] Dato inoltre $ W $ sottospazio vettoriale di $ V $ valgono le seguenti caratterizzazioni
+	\begin{itemize}
+		\item $ n_0 (\varphi) = \dim{\operatorname{Rad}{(\varphi)}} $;
+		\item $ n_{+} (\varphi) = \max{\{\dim{W} : W \subseteq V \text{ e } \varphi|_{W} > 0\}} $;
+		\item $ n_{-} (\varphi) = \max{\{\dim{W} : W \subseteq V \text{ e } \varphi|_{W} < 0\}} $.
+	\end{itemize}
+	Per il Teorema \ref{thm:Sylvester} esiste una base ortonormale $ \mathscr{B} $ rispetto a $ \varphi $ in cui la matrice del prodotto scalare è della forma
+	\[M_{\mathscr{B}}(\varphi) =
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	\fbox{$ \Id_{n_{+}} $} & & \\
+	& \fbox{$ -\Id_{n_{-}} $} & \\
+	& & \fbox{$ 0_{n_{0}} $}
+	\end{pmatrix} \]
+	dove $ \Id_{r} $ è la matrice identità di dimensione $ r \times r $ e $ 0_p $ è la matrice nulla di dimensione $ p \times p $. \\
+	Operativamente: per trovare la segnatura scrivo la matrice del prodotto scalare in una base ortonormale rispetto al prodotto scalare $ \varphi $; tale matrice è diagonale e la segnatura si legge sugli elementi della diagonale (ci sono $ n_{+} $ elementi uguali a 1, $ n_{-} $ elementi uguali a -1 e $ n_{0} $ elementi nulli). Per il Teorema Spettrale, posso semplicemente trovare gli autovalori della matrice del prodotto scalare (\textbf{Ci vanno altre ipotesi??})
+\end{definition}

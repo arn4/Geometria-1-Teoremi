@@ -1,0 +1,54 @@
+% MISCELLANEA
+
+\begin{thm}[forma canonica delle involuzioni] \textbf{*}
+	Sia $ V $ un $ \K $-spazio vettoriale con $ \dim{V} = n $ e sia $ f \colon V \to V $ un'applicazione lineare tale che $ f^{2} = \Id $. Allora esiste una base $ \mathscr{B} $ di $ V $ tale che 
+	\[[f]_{\mathscr{B}}^{\mathscr{B}} = 
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	\fbox{$ \Id_k $} & \\
+	& \fbox{$ -\Id_{n - k} $}
+	\end{pmatrix}\]
+	con $ k \in \N $ univocamente determinato.
+\end{thm}
+
+\begin{thm}[forma canonica delle proiezioni]
+	Sia $ V $ un $ \K $-spazio vettoriale con $ \dim{V} = n $ e sia $ f \colon V \to V $ un'applicazione lineare tale che $ f^{2} = f $ (proiezione). Allora esiste una base $ \mathscr{B} $ di $ V $ tale che 
+	\[[f]_{\mathscr{B}}^{\mathscr{B}} = 
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	\fbox{$ \Id_k $} & \\
+	& \fbox{$ 0_{n - k} $}
+	\end{pmatrix}\]
+	con $ k \in \N $ univocamente determinato.
+\end{thm}
+
+\begin{thm} \textbf{*}
+	Sia $ V $ uno spazio vettoriale su $ \R $ di dimensione $ \geq 1 $ e sia $ f \colon V \to V $ un'applicazione lineare tale che $ f^{2} = - \Id $. Allora esiste una base $ \mathscr{B} $ di $ V $ tale che 
+	\[[f]_{\mathscr{B}}^{\mathscr{B}} = 
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	& \fbox{$ -\Id_m $}\\
+	\fbox{$ \Id_m $} & 
+	\end{pmatrix}\]
+	con $ m \in \N $ univocamente determinato. In particolare tale base è $ \mathscr{B} = \{v_1, \ldots, v_m, f(v_1), \ldots, f(v_m)\} $.
+\end{thm}
+
+\begin{thm}[forma canonica delle matrici antisimmetriche reali] \textbf{*}
+	Sia $ A \in \mathrm{Mat}_{n \times n}(\R) $ antisimmetrica. Allora esiste una matrice ortogonale $ M \in O(n) $ tale che 
+	\[M^{-1} A M = M^{t} A M = 
+	\setlength{\arraycolsep}{0pt}
+	\begin{pmatrix}
+	\fbox{$ H_{a_1} $} & & &\\
+	& \ \ddots \ & & \\
+	& & \fbox{$ H_{a_k} $} & \\
+	& & & \fbox{$ 0 $}
+	\end{pmatrix}
+	\qquad
+	\text{ con }
+	H_{a_i} = 
+	\setlength{\arraycolsep}{3pt}
+	\begin{pmatrix}
+	0 & a_{i} \\
+	-a_{i} & 0
+	\end{pmatrix}\]
+\end{thm}
