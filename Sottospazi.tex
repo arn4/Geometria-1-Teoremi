@@ -1,0 +1,50 @@
+\begin{definition}[Sottospazio vettoriale]
+       Sia $ V $ un $ \K $-spazio vettoriale. Diciamo che $ W \subseteq V $ è un sottospazio vettoriale di $ V $ se valgono le seguenti proprietà
+       \begin{enumerate}[label=(\roman*)]
+               \item $ \forall v, w \in W \Rightarrow v + w \in W $
+               \item $ \forall v \in W, \forall \lambda \in \K \Rightarrow \lambda v \in W $
+               \item $ O_V \in W $
+       \end{enumerate}
+\end{definition}
+
+\begin{definition}[Somma tra sottospazi]
+	Sia V uno spazio vettoriale, e siano $U$ e $W$ due sottospazi. Allora si definisce somma
+	\[ U+W = \{ u + w | u \in U, w \in W \}. \]
+
+\begin{prop}[Operazioni tra sottospazi]
+	Valgono i seguenti fatti: 
+	\begin{enumerate}[label=(\roman*)]
+		\item Intersezione di sottospazi è un sottospazio vettoriale;
+		\item Somma di sottospazi è un sottospazio vettoriale;
+		\item Unione di sottospazi è un sottospazio vettoriale se e solo se uno è contemnuto nell'altro.
+	\end{enumerate}
+\end{prop}
+
+
+\begin{thm}[Formula di Grassmann]
+	Siano $ A $ e $ B $ sottospazi vettoriali di $ V $ su un campo $ \K $. Vale \[\dim{A} + \dim{B} = \dim{(A + B)} + \dim{(A \cap B)}\]
+\end{thm}
+
+\begin{definition}[Somma diretta]
+	Dati $ A $ e $ B $ sottospazi di $ V $ su un campo $ \K $, si dice che $ A $ e $ B $ sono in somma diretta, e si scriverà $ A \oplus B$, se $ A \cap B = \{O_V\} $.
+	In modo del tutto equivalente $ A $ e $ B $ sono in somma diretta se e solo se $ \dim{A} + \dim{B} =  \dim{(A + B)} $.	
+\end{definition}
+
+\begin{prop}[Unicità della decomposizione]
+	Sia $ Z = U \oplus V $ e $ z \in Z$. Allora $ \exists! u \in U, w \in W$ tali che $ z = u + v $.
+\end{prop}
+	
+% SUPERFLUO
+%\begin{definition}[Somma diretta di $ k $ sottospazi]
+%	$ U_1, \ldots , U_k $ sottospazi di $ V $ su un campo $ \K $ si dicono essere insomma diretta se $ \forall i \in \{1, \ldots, k\} $ vale \[U_i \cap (U_1 + \ldots + \hat{U}_i + \ldots + U_k) = \{O_V\}\]
+%	In modo equivalente $ U_1, \ldots , U_k $ sono insomma diretta se e solo se \[\dim{U_1} + \ldots + \dim{U_k} = \dim{(U_1 + \ldots + U_k)}\]
+%\end{definition}
+
+\begin{definition}[Complementare di un sottospazio]
+	Sia $ A $ un sottospazio di $ V $ su un campo $ \K $. Un complementare di $ A $ è un sottospazio $ B $ di $ V $ tale che
+	\begin{enumerate}[label=(\roman*)]
+		\item $ A \cap B = \{O_V\} $ ($ A $ e $ B $ sono in somma diretta)
+		\item $ A + B = V $
+	\end{enumerate}
+	In tal caso scriveremo che $ A \oplus B = V $. 
+\end{definition}
