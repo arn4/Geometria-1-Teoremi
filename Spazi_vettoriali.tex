@@ -1,6 +1,7 @@
 %%% SPAZI VETTORIALI
 
-\begin{definition}[Campo]
+
+\begin{definition}[campo] \footnote{Riassunto della sezione 1}
 	Un campo è una terna $ (\K, +, \cdot) $ dove $ \K $ è un insieme su cui sono definite due operazioni di \emph{somma} $ + \colon \K \times \K \to \K $ e \emph{prodotto} $ \cdot \colon \K \times \K \to \K $ che associano a due elementi dell'insieme un altro elemento dell'insieme, ovvero tali che
 	\begin{enumerate}
 		\item $ \forall x, y \in \K \Rightarrow x + y \in \K $
@@ -8,26 +9,28 @@
 	\end{enumerate}
 	e che rispettano le seguenti proprietà
 	\begin{enumerate}[label = (\roman*)]
-		\item \emph{associativa}
-		\item \emph{commutativa}
-		\item \emph{esistenza degli elementi neutri}
-		\item \emph{opposto}
-		\item \emph{inverso}
-		\item \emph{distributiva del prodotto rispetto alla sommma}
+		\item \emph{associativa}: $ \forall x, y, z \in \K, \ x + (y + z) = (x + y) + z \text{ e } x \cdot (y \cdot z) = (x \cdot y) \cdot z $;
+		\item \emph{commutativa}: $ \forall x, y \in \K, \ x + y = y + x \text{ e } x \cdot y = y \cdot x $;
+		\item \emph{esistenza degli elementi neutri}: $ \exists 0_{\K}, 1_{\K} \in \K: 0_{\K} \neq 1_{\K} $ tali che $ \forall x \in \K, \ x + 0_{\K} = 0_{\K} + x = x $ e $ \forall x \in \K, \ x \cdot 1_{\K} = 1_{\K} \cdot x = x $ (tali elementi sono unici e per semplicità vengono indicati con $ 0 $ e $ 1 $);
+		\item \emph{opposto}: $ \forall x \in \K, \exists y \in \K : x + y = 0_{\K} $ che viene indicato con $ - x $;
+		\item \emph{inverso}: $ \forall x \in \K : x \neq 0_{\K}, \exists y \in \K : x \cdot y = 1_{\K} $ che viene indicato con $ \frac{1}{x} $ o $ x^{-1} $;
+		\item \emph{distributiva del prodotto rispetto alla somma}: $ \forall x, y, z \in \K, \ x \cdot (y + z) = x \cdot y + x \cdot z $.
 	\end{enumerate}
 \end{definition}
 
-\begin{definition}[Spazio vettoriale]
-	Uno spazio vettoriale $ V $ su un campo $ \K $ o $ \K $-spazio vettoriale è una quaterna $ (V, \K, +, \cdot) $ dove $ K $ è un campo e $ V $ è un insieme non vuoto su cui sono definite due operazioni di 
+\begin{definition}[spazio vettoriale]
+	Uno spazio vettoriale $ V $ su un campo $ \K $ o $ \K $-spazio vettoriale è una quaterna $ (V, \K, +, \cdot) $ 
+	dove $ \K $ è un campo e $ V $ è un insieme non vuoto su cui sono definite due operazioni di 
+
 	\begin{enumerate}
-		\item \emph{somma} $ + \colon V \times V \to V $ tra elementi di $ V $ tale che $ \forall v, w \in V \Rightarrow v + w \in V $
-		\item \emph{prodotto per scalare} $ \cdot \colon \K \times V \to V $ tale che $ \forall v \in V, \forall \lambda \in \K \Rightarrow \lambda \cdot v = \lambda v \in V $
+		\item \emph{somma} $ + \colon V \times V \to V $ tra elementi di $ V $ tale che $ \forall v, w \in V \Rightarrow + (v, w) = v + w \in V $
+		\item \emph{prodotto per scalare} $ \cdot \colon \K \times V \to V $ tale che $ \forall v \in V, \forall \lambda \in \K \Rightarrow \cdot (\lambda, v) = \lambda \cdot v = \lambda v \in V $
 	\end{enumerate}
 	che devono rispettare le seguenti proprietà:
 	\begin{enumerate}[label=(\roman*)]
-		\item \emph{associativa della somma}
-		\item \emph{commutativa della somma}
-		\item \emph{esistenza dell'elemento neutro della somma}
+		\item \emph{associativa della somma}: $ \forall v, w, u \in V, \ v + (w + u) = (v + w) + u $;
+		\item \emph{commutativa della somma}: $ \forall v, w \in V, \ v + w = w + v $;
+		\item \emph{esistenza dell'elemento neutro della somma}: $ \exists O_{V} \in V : \forall v \in V, \ v + O_{V} = O_{V} + v = v $;
 		\item \emph{opposto della somma}
 		\item \emph{distributiva del prodotto rispetto alla somma}
 		\item \emph{associativa del prodotto}
