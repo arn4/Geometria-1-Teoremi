@@ -1,0 +1,83 @@
+% STRUTTURE ALGEBRICHE
+
+\begin{definition}[operazione]
+	Dato un insieme $ X $, si definisce operazione su $ X $ un'applicazione \[* \colon A \times A \to A.\]
+\end{definition}
+
+\begin{definition}[gruppo]
+	Un gruppo è una coppia $ (\mathbb{G}, *) $ dove $ \mathbb{G} $ è un insieme non vuoto e $ * $ è un'operazione su $ \mathbb{G} $ che soddisfa le seguenti proprietà:
+	\begin{enumerate}[label = (\roman*)]
+		\item \emph{associativa}: $ \forall a, b, c \in \mathbb{G}, \ a * (b * c) = (a * b) * c $;
+		\item \emph{esistenza dell'elemento neutro}: $ \forall a \in \mathbb{G}, \exists 1_{(\mathbb{G}, *)} : a * 1_{(\mathbb{G}. *)} = 1_{(\mathbb{G}, *)} * a = a $;
+		\item \emph{esistenza dell'inverso}: $ \forall a \in \mathbb{G}, \exists \bar{a} \in \mathbb{G} : a * \bar{a} = \bar{a} * a = 1_{(\mathbb{G}, *)} $.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[gruppo abeliano]
+	Un gruppo abeliano (o gruppo commutativo) è un gruppo $ (\mathbb{G}, *) $ che soddisfa anche la seguente proprietà:
+	\begin{enumerate}[label = (\roman*)]
+		\setcounter{enumi}{3}
+		\item \emph{commutativa}: $ \forall a, b \in \mathbb{G}, \ a * b = b * a $.
+	\end{enumerate}
+\end{definition}
+
+\begin{thm}
+	Dato un gruppo $ (\mathbb{G}, *) $:
+	\begin{enumerate}
+		\item l'elemento neutro è unico;
+		\item l'inverso di un elemento è unico;
+		\item \emph{legge di cancellazione}: se $ a, b, c \in \mathbb{G} $ e $ a * b = a * c $ allora $ b = c $.
+	\end{enumerate}
+\end{thm}
+
+\begin{definition}[anello]
+	Un anello è una terna $ (\mathbb{A}, +, \cdot) $ dove $ \mathbb{A} $ è un insieme, $ + $ e $ \cdot $ sono operazioni dette \emph{somma} e \emph{prodotto} su $ \mathbb{A} $ tali che:
+	\begin{enumerate}[label = (\roman*)]
+		\item $ (\mathbb{A}, +) $ è un gruppo abeliano (\emph{nota}: l'elemento neutro della somma viene indicato con $ 0_{\mathbb{A}} $ mentre l'inverso di $ a \in \mathbb{A} $ viene detto \emph{opposto} e denotato con $ - a $);
+		\item \emph{associativa del prodotto}: $ \forall a, b, c \in \mathbb{A}, \ a \cdot (b \cdot c) = (a \cdot b) \cdot c $;
+		\item \emph{elemento neutro del prodotto}: $ \exists 1_{\mathbb{A}} : \forall a \in \mathbb{A}, \ a \cdot 1_{\mathbb{A}} = 1_{\mathbb{A}} \cdot a = a $;
+		\item \emph{distributiva del prodotto rispetto alla somma}: $ \forall a, b, c \in \mathbb{A}, \ (a + b) \cdot c = a \cdot b + b \cdot c $. 
+	\end{enumerate}
+\end{definition}
+
+\begin{thm}
+	Sia $ (\mathbb{A}, +, \cdot) $ un anello. Allora:
+	\begin{enumerate}
+		\item $ \forall a \in A, \ a \cdot 0_{\mathbb{A}} = 0_{\mathbb{A}} \cdot = 0_{\mathbb{A}} $;
+		\item $ \forall a \in A, \ (- 1_{\mathbb{A}}) \cdot a = - a $ (dove $ - 1_{\mathbb{A}} $ rappresenta l'inverso rispetto alla somma dell'elemento neutro del prodotto e $ - a $ l'opposto di $ a $, i.e. inverso di $ a $ rispetto alla somma).
+	\end{enumerate}
+\end{thm}
+
+\begin{definition}[anello commutativo]
+	Un anello commutativo è un anello $ (\mathbb{A}, +, \cdot) $ che soddisfa anche la seguente proprietà:
+	\begin{enumerate}[label = (\roman*)]
+		\setcounter{enumi}{4}
+		\item \emph{commutativa}: $ \forall a, b \in \mathbb{A}, \ a \cdot b = b \cdot a $.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[corpo]
+	Un corpo è un anello $ 
+	(\mathbb{A}, +, \cdot) $ che soddisfa anche la seguente proprietà:
+	\begin{enumerate}[label = (\roman*)]
+		\setcounter{enumi}{4}
+		\item \emph{inverso rispetto al prodotto}: $ \forall a \in \mathbb{A}: a \neq 0_{\mathbb{A}}, \exists \bar{a} \in A : a \cdot \bar{a} = \bar{a} \cdot a = 1_{\mathbb{A}} $ che viene indicato con $ \bar{a} = a^{-1} $.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[campo]
+	Un campo è una terna $ (\mathbb{F}, + , \cdot) $ tale che:
+	\begin{enumerate}
+		\item $ (\mathbb{F}, +, \cdot) $ è un anello commutativo;
+		\item \emph{inverso rispetto al prodotto}: $ \forall a \in \mathbb{A}: a \neq 0_{\mathbb{A}}, \exists \bar{a} \in A : a \cdot \bar{a} = \bar{a} \cdot a = 1_{\mathbb{A}} $ che viene indicato con $ \bar{a} = a^{-1} $.
+	\end{enumerate}
+	In modo del tutto equivalente, un campo è $ (\mathbb{F}, + , \cdot) $ tale che:
+	\begin{enumerate}
+		\item $ (\mathbb{F}, +, \cdot) $ è un corpo;
+		\item \emph{commutativa}: $ \forall a, b \in \mathbb{A}, \ a \cdot b = b \cdot a $.
+	\end{enumerate}
+\end{definition}
+
+\begin{prop}
+	Sia $ (\mathbb{F}, + , \cdot) $ un campo. Allora $ (a \cdot b = 0_{\mathbb{F}} \wedge a \neq 0_{\mathbb{F}}) \Rightarrow b = 0_{\mathbb{F}} $.
+\end{prop}
