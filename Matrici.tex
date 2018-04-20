@@ -10,17 +10,9 @@
 	\end{pmatrix}\]
 \end{definition}
 
-\begin{definition}[Matrice iagonale e Identità]
+\begin{definition}[Matrice diagonale e Identità]
 	contenuto...
 \end{definition}
-
-\begin{definition}[Prodotto tra matrici]
-	contenuto...
-\end{definition}
-
-\begin{propriety}
-	\textsf{proprietà del prodotto ($ n \times n $ stabile rispetto al prodotto)}
-\end{propriety}
 
 \begin{definition}[Matrice trasposta]
 	contenuto...
@@ -30,9 +22,29 @@
 	contenuto...
 \end{propriety}
 
-\begin{definition}[Matrici coniugate]
-	Due matrici $ A $ e $ B $ si dicono coinugate se esiste una matrice $ P $ invertibile tale che \[B = P^{-1} A P.\] Matrici coniugate rappresentano la stessa applicazioni lineari viste in due basi diverse. 
+\begin{definition}[Prodotto tra matrici]
+	contenuto...
 \end{definition}
+
+\begin{propriety}[del prodotto tra matrici]
+	Il prodotto tra matrici gode delle seguenti proprietà:
+	\begin{enumerate}[label=(\roman*)]
+		\item $ A(B+C) = AB + AC $;
+		\item $ (\alpha A)B = A(\alpha B) = \alpha AB $;
+		\item $ (AB)C = A(BC) $;
+		\item $ ^t(AB) = ^tB^tA $. %TODO: sistemare i trasposti
+	\end{enumerate}
+\end{propriety}
+
+\begin{definition}
+	Si chiama inversa di una matrice quadrata $A$ e si indica con $A^{-1}$ la matrice tale che
+	\[AA^{-1}=A^{-1}A=Id.\]	
+\end{definition}
+
+% SPOSTATO
+%\begin{definition}[Matrici coniugate]
+%	Due matrici $ A $ e $ B $ si dicono coinugate se esiste una matrice $ P $ invertibile tale che %	\[B = P^{-1} A P.\] Matrici coniugate rappresentano la stessa applicazioni lineari viste in due basi diverse. 
+%\end{definition}
 
 \begin{definition}[Traccia]
 	Sia $ M $ una matrice quadrata $ n \times n $. La traccia di $ M $ è la somma degli elementi sulla diagonale 
@@ -51,15 +63,13 @@
 		\item $ \tr (A + B) = \tr(A) + \tr(B) $ e $ \tr(\lambda A) = \lambda \, \tr (A) $
 		\item $ \tr(\prescript{t}{}{A}) = \tr (A) $
 		\item $ \tr (AB) = \tr (BA) $
+		\item la traccia è inariante per coniugio
+			\footnote{Viene definito in seguito il coniugio};
 	\end{enumerate}
 \end{propriety}
 
-\begin{thm}[Invarianza della traccia per coniugio]
-	Se $ A $ e $ B $ sono matrici coniugate, allora $ \tr (A) = \tr (B) $
-\end{thm}
 
-Roba su riduzione a scalini...
 
-\begin{thm} \textbf{*}
+\begin{fatto}
 	Tutte e sole le matrici $ A \in \mathrm{Mat}_{n \times n}(\K) $ che commutano con ogni matrice $ B \in  \mathrm{Mat}_{n \times n}(\K) $ sono multipli dell'identità. \[AB = BA, \ \forall B \in \mathrm{Mat}_{n \times n}(\K) \quad \iff \quad \exists \lambda \in \K : A = \lambda \Id\]
-\end{thm}
+\end{fatto}
