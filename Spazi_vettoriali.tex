@@ -1,7 +1,7 @@
 %%% SPAZI VETTORIALI
 
 
-\begin{definition}[campo] \footnote{Riassunto della sezione 1}
+\begin{definition}[Campo] \footnote{Riassunto della sezione 1}
 	Un campo è una terna $ (\K, +, \cdot) $ dove $ \K $ è un insieme su cui sono definite due operazioni di \emph{somma} $ + \colon \K \times \K \to \K $ e \emph{prodotto} $ \cdot \colon \K \times \K \to \K $ che associano a due elementi dell'insieme un altro elemento dell'insieme, ovvero tali che
 	\begin{enumerate}
 		\item $ \forall x, y \in \K \Rightarrow x + y \in \K $
@@ -18,7 +18,7 @@
 	\end{enumerate}
 \end{definition}
 
-\begin{definition}[spazio vettoriale]
+\begin{definition}[Spazio vettoriale]
 	Uno spazio vettoriale $ V $ su un campo $ \K $ o $ \K $-spazio vettoriale è una quaterna $ (V, \K, +, \cdot) $ 
 	dove $ \K $ è un campo e $ V $ è un insieme non vuoto su cui sono definite due operazioni di 
 
@@ -31,10 +31,11 @@
 		\item \emph{associativa della somma}: $ \forall v, w, u \in V, \ v + (w + u) = (v + w) + u $;
 		\item \emph{commutativa della somma}: $ \forall v, w \in V, \ v + w = w + v $;
 		\item \emph{esistenza dell'elemento neutro della somma}: $ \exists O_{V} \in V : \forall v \in V, \ v + O_{V} = O_{V} + v = v $;
-		\item \emph{opposto della somma}
-		\item \emph{distributiva del prodotto rispetto alla somma}
-		\item \emph{associativa del prodotto}
-		\item \emph{elemento neutro del prodotto}
+		\item \emph{opposto della somma}: $ \forall v \in V, \exists w \in W : v + w = O_{V} $ che viene indicato con $ w = -v $;
+		\item \emph{distributiva del prodotto rispetto alla somma}: $ \forall \lambda \in \K, \forall v, w \in V, \ \lambda (v + w) = \lambda v + \lambda w $;
+		\item \emph{distributiva del somma sul campo rispetto al prodotto}: $ \forall \lambda, \mu \in \K, \forall v \in V, \ (\lambda + \mu) v = \lambda v + \mu v $;
+		\item \emph{associativa del prodotto}: $ \forall \lambda, \mu \in \K, \forall v \in V, \ (\lambda \mu) v = \lambda (\mu v) $;
+		\item \emph{elemento neutro del prodotto}: $ \exists 1_{\K} \in \K : \forall v \in V, \ 1_{\K} \cdot v = v $;
 	\end{enumerate}
 	Chiameremo \emph{vettori} gli elementi di $ V $. \\
 	\textsf{Nota: dove non specificato intenderemo sempre che $ V $ è uno spazio vettoriale su un campo $ \K $.}
@@ -48,26 +49,6 @@
 		\item $ (-1_{\K}) \cdot v = -v $
 	\end{enumerate}
 \end{propriety}
-
-
-% SPOSTATO 
-%\begin{definition}[Sottospazio vettoriale]
-%	Sia $ V $ un $ \K $-spazio vettoriale. Diciamo che $ W \subseteq V $ è un sottospazio vettoriale di $ V $ se valgono le seguenti proprietà
-%	\begin{enumerate}[label=(\roman*)]
-%		\item $ \forall v, w \in W \Rightarrow v + w \in W $
-%		\item $ \forall v \in W, \forall \lambda \in \K \Rightarrow \lambda v \in W $
-%		\item $ O_V \in W $
-%	\end{enumerate}
-%\end{definition}
-
-
-%\begin{thm}[intersezione di sottospazi]
-%	\textsf{Intersezione di sottospazi è un sottospazio vettoriale}
-%\end{thm}
-%
-%\begin{thm}[somma di sottospazi]
-%	\textsf{Somma di sottospazi è un sottospazio vettoriale}
-%\end{thm}
 
 \begin{definition}[Combinazione lineare]
 	Sia $ V $ un $ \K $-spazio vettoriale, siano $ v_1, \ldots , v_n \in \nobreak V $ e $ \lambda_1, \ldots , \lambda_n \in \K $. 
@@ -93,24 +74,16 @@
 \end{thm}
 
 \begin{definition}[Dipendenza e indpendenza lineare] 
-	Sia $ V $ un $ \K $-spazio vettoriale e siano $ v_1, \ldots , v_n \in V $. Si dice che $ v_1, \ldots, v_n $ 
-	sono linearmente dipendenti se $ \exists \lambda_1, \ldots , \lambda_n \in \K $ non tutti nulli tali che 
-	\[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V.\] Analogamente si dice che $ v_1, \ldots, v_n $ sono linearmente 
-	indipendenti se \[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V \iff \lambda_1 = \ldots = \lambda_n = 0.\]	
+	Sia $ V $ un $ \K $-spazio vettoriale e siano $ v_1, \ldots , v_n \in V $. Si dice che $ v_1, \ldots, v_n $ sono linearmente dipendenti se $ \exists \lambda_1, \ldots , \lambda_n \in \K $ non tutti nulli tali che \[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V.\] Analogamente si dice che $ v_1, \ldots, v_n $ sono linearmente indipendenti se \[\lambda_1 v_1 + \ldots + \lambda_n v_n = O_V \Rightarrow \lambda_1 = \ldots = \lambda_n = 0.\]	
 \end{definition}
 
 \begin{definition}[Base]
 	Sia $ V $ un $ \K $-spazio vettoriale. Un insieme $ \{v_1, \ldots, v_n\} $ si dice base di $ V $ se
 	\begin{enumerate}[label=(\roman*)]
-		\item $ v_1, \ldots, v_n $ sono linearmente indipendenti
-		\item $ Span\{v_1, \ldots , v_n\} = V $
+		\item $ v_1, \ldots, v_n $ sono linearmente indipendenti;
+		\item $ Span\{v_1, \ldots , v_n\} = V $ (generano).
 	\end{enumerate}
 \end{definition}
-
-% Superfluo...
-%\begin{definition}[sottoinsieme massimale]
-%	\textsf{se aggiungo un vettore l'insieme non è più linearmente indipendente}	
-%\end{definition}
 
 \begin{lemma}[Base è indipendente massimale]
 	Sia $A \subset V$. $A$ è indipendente massimale se e solo se è una base. 
@@ -124,6 +97,7 @@
 	Ogni\footnote{Dimostrato solo per spazi finitamente generati, ma vero in generale. In seguito ci si riferirà solemante a spazi finitamente generati.} 
 	spazio vettoriale ammette una base.
 \end{thm}
+
 
 \begin{lemma}[Algoritmo di scambio]
 	Sia $ V $ un $ \K $-spazio vettoriale e siano $ A = \{v_1, \ldots, v_m\} $ e $ B = \{  w_1, \ldots, w_n \} $ due insiemi linermente indipendenti,
@@ -165,4 +139,5 @@
 		\item Ogni insieme di $n$ elementi che genera è una base.
         \end{enumerate}
 \end{prop}
+
 
