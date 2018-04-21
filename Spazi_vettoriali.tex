@@ -18,6 +18,7 @@
 	\end{enumerate}
 \end{definition}
 
+
 \begin{definition}[Spazio vettoriale]
 	Uno spazio vettoriale $ V $ su un campo $ \K $ o $ \K $-spazio vettoriale è una quaterna $ (V, \K, +, \cdot) $ 
 	dove $ \K $ è un campo e $ V $ è un insieme non vuoto su cui sono definite due operazioni di 
@@ -55,7 +56,6 @@
 	Si dice combinazione lineare dei $ v_i $ un vettore $ v \in V $ tale che 
 	\[v = \sum_{i=1}^{n} \lambda_i v_i = \lambda_1 v_1 + \ldots + \lambda_n v_n \]
 \end{definition}
-
 
 \begin{definition}[Span]
 	\[Span\{v_1, \ldots , v_n\} = \left\{ v \in V: \exists \lambda_1, \ldots , \lambda_n \in \K: v = \sum_{i=1}^{n} \lambda_i v_i \right\}\]
@@ -98,6 +98,12 @@
 	spazio vettoriale ammette una base.
 \end{thm}
 
+
+\begin{lemma}[Algoritmo di scambio]
+	Sia $ V $ un $ \K $-spazio vettoriale e siano $ A = \{v_1, \ldots, v_m\} $ e $ B = \{  w_1, \ldots, w_n \} $ due insiemi linermente indipendenti,
+	tali che $ B \subseteq Span(A) $. Allora $\exists B' \subseteq A $, tale che
+	\[ A' = \left ( A \setminus B' \right ) \cup B \] è linearmente indipendente e $Span(A') = Span(A)$. 
+\end{lemma}
 
 \begin{lemma}[Algoritmo di scambio]
 	Sia $ V $ un $ \K $-spazio vettoriale e siano $ A = \{v_1, \ldots, v_m\} $ e $ B = \{  w_1, \ldots, w_n \} $ due insiemi linermente indipendenti,
