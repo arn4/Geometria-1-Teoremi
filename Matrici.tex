@@ -32,11 +32,12 @@
 		\item $ A(B+C) = AB + AC $;
 		\item $ (\alpha A)B = A(\alpha B) = \alpha AB $;
 		\item $ (AB)C = A(BC) $;
-		\item $ ^t(AB) = ^tB^tA $. %TODO: sistemare i trasposti
+		\item $ ^t(AB) = ^tB^tA $; %TODO: sistemare i trasposti
+		\item $(AB)^{-1} = B^{-1}A^{-1}.$
 	\end{enumerate}
 \end{propriety}
 
-\begin{definition}
+\begin{definition}[Matrice inversa]
 	Si chiama inversa di una matrice quadrata $A$ e si indica con $A^{-1}$ la matrice tale che
 	\[AA^{-1}=A^{-1}A=Id.\]	
 \end{definition}
@@ -62,14 +63,43 @@
 	\begin{enumerate}[label=(\roman*)]
 		\item $ \tr (A + B) = \tr(A) + \tr(B) $ e $ \tr(\lambda A) = \lambda \, \tr (A) $
 		\item $ \tr(\prescript{t}{}{A}) = \tr (A) $
-		\item $ \tr (AB) = \tr (BA) $
+		\item $ \tr (AB) = \tr (BA) $. Più in generale una permutazione ciclica del prodotto non cambia la traccia.
 		\item la traccia è inariante per coniugio
 			\footnote{Viene definito in seguito il coniugio};
 	\end{enumerate}
 \end{propriety}
 
+\begin{definition}[Rango]
+	Si dice rango di una matrice la dimensione dello Span dei vettori colonna.
+\end{definition}
 
+\begin{definition}[Riduzione per righe]
+	contenuto...
+\end{definition}
+
+\begin{definition}[Riduzione per colonne]
+	contenuto...
+\end{definition}
+
+\begin{definition}[Pivot]
+	contenuto...
+\end{definition}
+
+\begin{thm}
+	Sia $A$ una matrice, vale la seguente uguaglianza:
+	\[ \rg(A) = \#\text{pivot} = \#\text{(righe $\ne 0$)} = \dim \left ( Span (\text{vettori riga} ) \right ) \]
+\end{thm}
+
+\begin{corollary}
+	Per ogni matrice $A$ si ha che \[ \rg(A) = \rg(^t A).\]
+\end{corollary}
+
+\begin{prop}
+	Le righe non nulle di una matrice ridotta per righe sono linearmente indipendenti e le colonne che contengono pivot sono linearmente indipendenti. \\
+	Analogamente vale per la riduzione per colonne. 
+\end{prop}
 
 \begin{fatto}
 	Tutte e sole le matrici $ A \in \mathrm{Mat}_{n \times n}(\K) $ che commutano con ogni matrice $ B \in  \mathrm{Mat}_{n \times n}(\K) $ sono multipli dell'identità. \[AB = BA, \ \forall B \in \mathrm{Mat}_{n \times n}(\K) \quad \iff \quad \exists \lambda \in \K : A = \lambda \Id\]
 \end{fatto}
+
