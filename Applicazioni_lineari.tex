@@ -1,6 +1,6 @@
 % APPLICAZIONI LINEARI
 
-\begin{definition}[spazio delle funzioni]
+\begin{definition}[Spazio delle funzioni]
 	Sia $ A $ e $ V $ un $ \K $-spazio vettoriale. L'insieme $ V^A = \mathscr{F}{(A, V)} = \{f \colon A \to V\} $ con le operazioni di
 	\begin{itemize}
 		\item \emph{somma} $ \forall f, g \in \mathscr{F}(A, V) $: $ \forall x \in A, (f + g)(x) = f(x) + g(x) $;
@@ -9,7 +9,7 @@
 	è lo spazio vettoriale delle funzioni da $ A $ in $ V $. 
 \end{definition}
 
-\begin{definition}[applicazione lineare]
+\begin{definition}[Applicazione lineare]
 	Siano $ V $ e $ W $ due $ \K $-spazi vettoriali. Diremo che una funzione $ L \colon V \to W  $ è un'applicazione lineare (o mappa lineare o omomorfismo) se $ L $ soddisfa le seguenti proprietà
 	\begin{enumerate}[label = (\roman*)]
 		\item $ \forall v_1, v_2 \in V $ vale $ L(v_1 + v_2) = L(v_1) + L(v_2) $
@@ -22,28 +22,29 @@
 	L'insieme delle applicazioni lineari $ \mathscr{L}{(V, W)} = \{L \colon V \to W : L \text{ è lineare}\} $ è un sottospazio vettoriale di $ \mathscr{F}{(V, W)} $
 \end{definition}
 
-\begin{definition}[nucleo]
+\begin{definition}[Nucleo]
 	Siano $ V $ e $ W $ due spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W  $ un'applicazione lineare. Definiamo nucleo o kernel di $ L $, e scriveremo $ \ker{L}$, l'insieme degli elementi di $ V $ la cui immagine attraverso $ L $ è lo zero di $ W $. Formalmente \[\ker{L} = \{v \in V \colon L(v) = O_W\} \]
 \end{definition}
 
-\begin{thm}
-	Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \ker{L} $ è un sottospazio vettoriale di $ V $.
-\end{thm}
+\begin{prop}[di nucleo e immagine]
+	Valgono le seguenti proprietà:
+	\begin{enumerate}[label = (\roman*)]
+		\item Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \ker{L} $ è un sottospazio vettoriale di $ V $.
+		\item Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \im{L} $ è un sottospazio vettoriale di $ W $.
+			Più in generale se $U$ è un sottospazio di $V$ allora $ \im{L|_U} $ è un sottospazio di $W$.
+	\end{enumerate}
+\end{prop}
 
-\begin{thm}
-	Sia $ L \in \mathscr{L}{(V, W)} $. Allora $ \im{L} $ è un sottospazio vettoriale di $ W $.
-\end{thm}
-
-\begin{thm}
+\begin{prop}
 	$ L \in \mathscr{L}{(V, W)} $ è iniettiva se e solo se $ \ker{L} = \{O_V\} $.
-\end{thm}
+\end{prop}
 
-\begin{thm}[composizione di applicazioni lineari]
-	\textsf{la composizione di due applicazioni lineari è ancora un'applicazione lineare}
-\end{thm}
+\begin{prop}[Composizione di applicazioni lineari]
+	La composizione di due applicazioni lineari è ancora un'applicazione lineare.
+\end{prop}
 
-\begin{thm}[inversa di un'applicazione lineare]
-	\textsf{l'inversa di una applicazioni lineare (se esiste) è ancora un'applicazione lineare}
+\begin{thm}[Inversa di un'applicazione lineare]
+	L'inversa di una applicazioni lineare (se esiste) è ancora un'applicazione lineare
 \end{thm}
 
 \begin{thm}
@@ -54,21 +55,38 @@
 	Siano $ V $ e $ W $ spazi vettoriali su un campo $ \K $ e sia $ L \colon V \to W $  un'applicazione lineare. Allora vale \[\dim{V} = \dim{\im{L}} + \dim{\ker{L}}\]
 \end{thm}
 
-\begin{thm}
+\begin{corollary}
+	Valgono le seguenti relazioni:\\
+	contenuto...
+\end{corollary}
+
+\begin{thm}[Biettività applicazioni lineari]
 	Sia $ L \colon \K^n \to \K^n $ un'applicazione lineare. Se $ \ker{L} = \{O_V\} $ e $ \im{L} = W $, allora $ L $ è biettiva e dunque invertibile
 \end{thm}
 
-\begin{definition}[isomorfismo]
+\begin{definition}[Isomorfismo]
 	$ L \in \mathscr{L}{(V, W)} $ biettiva si dice isomorfismo. Se tale applicazioni esiste si dice che $ V $ e $ W $ sono isomorfi.
 \end{definition}
 
-\begin{definition}[endomorfismo]
+\begin{definition}[Endomorfismo]
 	$ L \in \mathscr{L}{(V, V)} $ dallo spazio in sé si dice endomorfismo. L'insieme degli endomorfismi viene indicato con $ \End{(V)} $ ed è un sottospazio vettoriale di $ \mathscr{F}{(V, V)} $
 \end{definition}
 
-%\clearpage
+\begin{prop}[Invertibilità endomorfismi]
+	Un'endomorfismo è invertibile se e solo se è iniettivo.
+\end{prop}
 
-\begin{thm}[decomposizione di Fitting] \textbf{*}
+\begin{thm}[Applicazioni lineari e basi 1]
+	Sia $V$ uno spazio vettoriale e $ \mathscr{B} = \{v_1, \ldots, v_n\} $ una base. Sia $ L \in \mathscr{L}{(V, W)} $ un'applixazione lineare. Allora $L$ è determinata dalla conoscenza di $L(v_i)$ per tutti gli elementi della base.
+\end{thm}
+
+\begin{thm}[Applicazioni lineari e basi 2]
+	Siano $V$ e $W$ due spazi vettoriali, $ \mathscr{B} = \{v_1, \ldots, v_n\} $ una base di $V$ e $w_1, \ldots, w_n$ dei vettori di $W$. Esiste un'unica applicazione lineare $L \in \mathscr{L}{(V, W)}$ tale che $L(v_i) = w_i$.
+\end{thm}
+
+% Altri fatti di vaga utilità
+
+\begin{fatto}[decomposizione di Fitting]
 	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ e $ f \in \End{(V)} $. Allora esiste un intero $ k \leq n $ tale che \begin{enumerate}[label = (\roman*)]
 		\item $ \ker{f^{k}} = \ker{f^{k + 1}} $;
 		\item $ \im{f^{k}} = \im{f^{k + 1}} $;
@@ -77,13 +95,13 @@
 		\item $ f\lvert_{\ker{f^{k}}} \colon \ker{f^{k}} \to \ker{f^{k}} $ è nilpotente;
 		\item $ V = \ker{f^{k}} \oplus \im{f^{k}} $.
 	\end{enumerate}
-\end{thm}
+\end{fatto}
 
-\begin{prop} \footnote{Primo compitino 2017/2018}
+\begin{fatto}
 	Sia $ V $ un $ \K $-spazio vettoriale di $ \dim{V} = n $ e $ f \in \End{(V)} $. Allora:
 	\begin{enumerate}
 		\item $ \forall j \in \N, \ \ker{f^{j}} \subseteq \ker{f^{j + 1}} $;
 		\item se esiste $ j \in \N : \ker{f^{j}} = \ker{f^{j + 1}} $ allora $ \forall m \geq j, \ \ker{f^{m}} = \ker{f^{m + 1}} $;
 		\item se esiste $ j \in \N : f^{j} = 0 $ (endomorfismo nullo), allora $ f^{n} = 0 $. 
 	\end{enumerate}
-\end{prop}
+\end{fatto}
